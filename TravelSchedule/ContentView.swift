@@ -8,12 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    private let services = Services()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(alignment: .leading) {
+            Text("Проверка сетевых запросов \nAPI «Яндекс Расписаний»")
+                .font(.title)
+                .fontWeight(.bold)
+            Text("для ревью")
+            
+            Spacer().frame(height: 30)
+            
+            Button("Список ближайших станций") {
+                services.stations()
+            }
+            Button("Ближайший город") {
+                services.settlement()
+            }
+            Button("Информация о перевозчике") {
+                services.carrier()
+            }
+            Button("Копирайт Яндекс Расписаний") {
+                services.copyright()
+            }
+            
+            Spacer()
         }
         .padding()
     }
