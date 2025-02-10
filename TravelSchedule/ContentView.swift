@@ -23,6 +23,9 @@ struct ContentView: View {
             Button("Расписание рейсов между станциями") {
                 services.search()
             }
+            Button("Расписание рейсов по станции") {
+                services.schedule()
+            }
             Button("Список ближайших станций") {
                 services.stations()
             }

@@ -7,6 +7,7 @@ servers:
 - url: https://api.rasp.yandex.net
 tags:
 - name: Расписание рейсов между станциями
+- name: Расписание рейсов по станции
 - name: Список ближайших станций
 - name: Ближайший город
 - name: Информация о перевозчике
@@ -95,7 +96,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Search'
-                
+
+  /v3.0/schedule/:
+    get:
+      tags:
+      - Расписание рейсов по станции
+      operationId: schedule
+      parameters:
+      - name: apikey
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: station
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: transport_types
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: direction
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: event
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: system
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: show_systems
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: result_timezone
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+            
   /v3.0/nearest_stations/:
     get:
       tags:
@@ -602,4 +672,81 @@ components:
             title:
               type: string
         express_type:
+          type: string
+
+    Schedule:
+      type: object
+      properties:
+        date:
+          type: string
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        station:
+          $ref: '#/components/schemas/StationForSchedule'
+        schedule:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScheduleFull'
+        schedule_direction:
+          type: object
+          properties:
+            code:
+              type: string
+            title:
+              type: string
+        directions:
+          type: object
+          properties:
+            code:
+              type: string
+            title:
+              type: string
+
+    StationForSchedule:
+      type: object
+      properties:
+        code:
+          type: string
+        station_type:
+          type: string
+        station_type_name:
+          type: string
+        title:
+          type: string
+        popular_title:
+          type: string
+        short_title:
+          type: string
+        codes:
+          type: object
+          properties:
+            yandex:
+              type: string
+            esr:
+              type: string
+        transport_type:
+          type: string
+        type:
+          type: string
+          
+    ScheduleFull:
+      type: object
+      properties:
+        except_days:
+          type: string
+        arrival:
+          type: string
+        thread:
+          $ref: '#/components/schemas/Thread'
+        is_fuzzy:
+          type: boolean
+        days:
+          type: string
+        stops:
+          type: string
+        departure:
+          type: string
+        terminal:
+          type: string
+        platform:
           type: string

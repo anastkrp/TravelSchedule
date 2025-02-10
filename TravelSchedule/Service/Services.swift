@@ -111,4 +111,19 @@ final class Services {
             print("Search: \n\(search)")
         }
     }
+    
+    func schedule() {
+        fetchData { client in
+            return ScheduleService(
+                client: client,
+                apikey: self.key
+            )
+        } task: { service in
+            let schedule = try await service.schedule(
+                station: "s9612374",
+                date: "2025-02-11"
+            )
+            print("Schedule: \n\(schedule)")
+        }
+    }
 }
