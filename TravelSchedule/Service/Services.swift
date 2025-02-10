@@ -94,6 +94,21 @@ final class Services {
             let copyright = try await service.getCopyright()
             print("Copyright: \n\(copyright)")
         }
-
+    }
+    
+    func search() {
+        fetchData { client in
+            return SearchService(
+                client: client,
+                apikey: self.key
+            )
+        } task: { service in
+            let search = try await service.search(
+                from: "c146",
+                to: "c213",
+                date: "2025-02-10"
+            )
+            print("Search: \n\(search)")
+        }
     }
 }

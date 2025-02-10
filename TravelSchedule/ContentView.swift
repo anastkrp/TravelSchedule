@@ -20,6 +20,9 @@ struct ContentView: View {
             
             Spacer().frame(height: 30)
             
+            Button("Расписание рейсов между станциями") {
+                services.search()
+            }
             Button("Список ближайших станций") {
                 services.stations()
             }

@@ -6,11 +6,96 @@ info:
 servers:
 - url: https://api.rasp.yandex.net
 tags:
+- name: Расписание рейсов между станциями
 - name: Список ближайших станций
 - name: Ближайший город
 - name: Информация о перевозчике
 - name: Копирайт Яндекс Расписаний
 paths:
+  /v3.0/search/:
+    get:
+      tags:
+      - Расписание рейсов между станциями
+      operationId: search
+      parameters:
+      - name: apikey
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: lang
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: transport_types
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: system
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: show_systems
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: add_days_mask
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: result_timezone
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: transfers
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search'
+                
   /v3.0/nearest_stations/:
     get:
       tags:
@@ -307,3 +392,214 @@ components:
               type: string
             text:
               type: string
+
+    Search:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        interval_segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervalSegments'
+        segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Segments'
+        search:
+          type: object
+          properties:
+            date:
+              type: string
+            to:
+             $ref: '#/components/schemas/To'
+            from:
+              $ref: '#/components/schemas/From'
+      
+    To:
+      type: object
+      properties:
+        code:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+
+    From:
+      type: object
+      properties:
+        code:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+          
+    FromToIntervalSegments:
+      type: object
+      properties:
+        code:
+          type: string
+        title:
+          type: string
+        station_type:
+          type: string
+        station_type_name:
+          type: string
+        popular_title:
+          type: string
+        short_title:
+          type: string
+        transport_type:
+          type: string
+        type:
+          type: string
+    
+    TicketsInfo:
+      type: object
+      properties:
+        et_marker:
+          type: boolean
+        places:
+          type: array
+          items:
+            type: object
+            properties:
+              currency:
+                type: string
+              price:
+                type: object
+                properties:
+                  cents:
+                    type: integer
+                  whole:
+                    type: integer
+              name:
+                type: string
+     
+    IntervalSegments:
+      type: object
+      properties:
+        from:
+          $ref: '#/components/schemas/FromToIntervalSegments'
+        thread:
+          $ref: '#/components/schemas/Thread'
+        departure_platform:
+          type: string
+        stops:
+          type: string
+        departure_terminal:
+          type: string
+        to:
+          $ref: '#/components/schemas/FromToIntervalSegments'
+        has_transfers:
+          type: boolean
+        tickets_info:
+          $ref: '#/components/schemas/TicketsInfo'
+        duration:
+          type: integer
+        arrival_terminal:
+          type: string
+        start_date:
+          type: string
+        arrival_platform:
+          type: string
+      
+    Segments:
+      type: object
+      properties:
+        arrival:
+          type: string
+        from:
+          $ref: '#/components/schemas/FromToIntervalSegments'
+        thread:
+          $ref: '#/components/schemas/Thread'
+        departure_platform:
+          type: string
+        departure:
+          type: string
+        stops:
+          type: string
+        departure_terminal:
+          type: string
+        to:
+          $ref: '#/components/schemas/FromToIntervalSegments'
+        has_transfers:
+          type: boolean
+        tickets_info:
+          $ref: '#/components/schemas/TicketsInfo'
+        duration:
+          type: integer
+        arrival_terminal:
+          type: string
+        start_date:
+          type: string
+        arrival_platform:
+          type: string
+      
+    Thread:
+      type: object
+      properties:
+        uid:
+          type: string
+        title:
+          type: string
+        interval:
+          type: object
+          properties:
+            density:
+              type: string
+            end_time:
+              type: string
+            begin_time:
+              type: string
+        number:
+          type: string
+        short_title:
+          type: string
+        thread_method_link:
+          type: string
+        carrier:
+          properties:
+              code:
+                type: integer
+              contacts:
+                type: string
+              url:
+                type: string
+              logo_svg:
+                type: string
+              title:
+                type: string
+              phone:
+                type: string
+              codes:
+                type: object
+                properties:
+                  icao:
+                    type: string
+                  sirena:
+                    type: string
+                  iata:
+                    type: string
+              address:
+                type: string
+              logo:
+                type: string
+              email:
+                type: string
+        transport_type:
+          type: string
+        vehicle:
+          type: string
+        transport_subtype:
+          properties:
+            color:
+              type: string
+            code:
+              type: string
+            title:
+              type: string
+        express_type:
+          type: string
