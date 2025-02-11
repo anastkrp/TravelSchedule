@@ -126,4 +126,16 @@ final class Services {
             print("Schedule: \n\(schedule)")
         }
     }
+    
+    func thread() {
+        fetchData { client in
+            return ThreadService(
+                client: client,
+                apikey: self.key
+            )
+        } task: { service in
+            let thread = try await service.thread(uid: "028S_3_2")
+            print("Thread: \n\(thread)")
+        }
+    }
 }

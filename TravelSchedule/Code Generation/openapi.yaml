@@ -8,6 +8,7 @@ servers:
 tags:
 - name: Расписание рейсов между станциями
 - name: Расписание рейсов по станции
+- name: Список станций следования
 - name: Список ближайших станций
 - name: Ближайший город
 - name: Информация о перевозчике
@@ -165,6 +166,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Schedule'
+                
+  /v3.0/thread/:
+    get:
+      tags:
+      - Список станций следования
+      operationId: thread
+      parameters:
+      - name: apikey
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: to
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: lang
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: show_systems
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreadStation'
             
   /v3.0/nearest_stations/:
     get:
@@ -746,6 +801,94 @@ components:
           type: string
         departure:
           type: string
+        terminal:
+          type: string
+        platform:
+          type: string
+
+    ThreadStation:
+      type: object
+      properties:
+        except_days:
+          type: string
+        arrival_date:
+          type: string
+        from:
+          type: string
+        uid:
+          type: string
+        title:
+          type: string
+        interval:
+          type: object
+          properties:
+            density:
+              type: string
+            end_time:
+              type: string
+            begin_time:
+              type: string
+        departure_date:
+          type: string
+        start_time:
+          type: string
+        number:
+          type: string
+        short_title:
+          type: string
+        days:
+          type: string
+        to:
+          type: string
+        carrier:
+          properties:
+              code:
+                type: integer
+              title:
+                type: string
+              codes:
+                type: object
+                properties:
+                  icao:
+                    type: string
+                  sirena:
+                    type: string
+                  iata:
+                    type: string
+        transport_type:
+          type: string
+        stops:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stops'
+        vehicle:
+          type: string
+        start_date:
+          type: string
+        transport_subtype:
+          properties:
+            color:
+              type: string
+            code:
+              type: string
+            title:
+              type: string
+        express_type:
+          type: string
+  
+    Stops:
+      type: object
+      properties:
+        arrival:
+          type: string
+        departure:
+          type: string
+        duration:
+          type: integer
+        stop_time:
+          type: integer
+        station:
+          $ref: '#/components/schemas/StationForSchedule'
         terminal:
           type: string
         platform:
