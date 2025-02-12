@@ -138,4 +138,23 @@ final class Services {
             print("Thread: \n\(thread)")
         }
     }
+            
+    func stationsList() {
+        fetchData { client in
+            return StationsListService(
+                client: client,
+                apikey: self.key
+            )
+        } task: { service in
+            print("Fetching stations list...")
+            
+            let stationsList = try await service.stationsList()
+            
+            guard let countries = stationsList.countries else {
+                print("No countries found")
+                return
+            }
+            print("Stations list: \n Example \n Found \(countries.count) countries")
+        }
+    }
 }

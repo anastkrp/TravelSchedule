@@ -38,6 +38,9 @@ struct ContentView: View {
             Button("Информация о перевозчике") {
                 services.carrier()
             }
+            Button("Список всех доступных станций") {
+                services.stationsList()
+            }
             Button("Копирайт Яндекс Расписаний") {
                 services.copyright()
             }

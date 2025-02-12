@@ -12,6 +12,7 @@ tags:
 - name: Список ближайших станций
 - name: Ближайший город
 - name: Информация о перевозчике
+- name: Список всех доступных станций
 - name: Копирайт Яндекс Расписаний
 paths:
   /v3.0/search/:
@@ -362,6 +363,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Carrier'
+
+  /v3.0/stations_list/:
+    get:
+      tags:
+      - Список всех доступных станций
+      operationId: stationsList
+      parameters:
+      - name: apikey
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/StationsList'
+
   /v3.0/copyright/:
     get:
       tags:
@@ -892,4 +923,79 @@ components:
         terminal:
           type: string
         platform:
+          type: string
+
+    StationsList:
+      type: object
+      properties:
+        countries:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              codes:
+                type: object
+                properties:
+                  esr_code:
+                    type: string
+                  yandex_code:
+                    type: string
+              regions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Regions'
+  
+    Regions:
+      type: object
+      properties:
+        settlements:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              codes:
+                type: object
+                properties:
+                  esr_code:
+                    type: string
+                  yandex_code:
+                    type: string
+              stations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    direction:
+                      type: string
+                    codes:
+                      type: object
+                      properties:
+                        esr_code:
+                          type: string
+                        yandex_code:
+                          type: string
+                    station_type:
+                      type: string
+                    title:
+                      type: string
+                    #longitude:
+                      #type: number
+                      #format: float
+                    transport_type:
+                      type: string
+                    #latitude:
+                      #type: number
+                      #format: float
+        codes:
+          type: object
+          properties:
+            esr_code:
+              type: string
+            yandex_code:
+              type: string
+        title:
           type: string
