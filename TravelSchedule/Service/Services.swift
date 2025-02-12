@@ -22,7 +22,8 @@ final class Services {
         do {
             let client = Client(
                 serverURL: try Servers.Server1.url(),
-                transport: URLSessionTransport()
+                transport: URLSessionTransport(),
+                middlewares: [AuthenticationMiddleware(authorizationHeaderFieldValue: key)]
             )
             
             let service = service(client)
@@ -39,112 +40,88 @@ final class Services {
     
     func stations() {
         fetchData { client in
-            return NearestStationsService(
-                client: client,
-                apikey: self.key
-            )
+            return NearestStationsService(client: client)
         } task: { service in
             let stations = try await service.getNearestStations(
                 lat: 50.440046,
                 lng: 40.4882367,
-                distance: 50
+                distance: 25
             )
-            print("Stations: \n\(stations)")
+            print("🔸 Stations: \n\(stations)")
         }
     }
     
     func settlement() {
         fetchData { client in
-            return NearestSettlementService(
-                client: client,
-                apikey: self.key
-            )
+            return NearestSettlementService(client: client)
         } task: { service in
             let settlement = try await service.getNearestSettlement(
                 lat: 50.440046,
                 lng: 40.4882367,
                 distance: 50
             )
-            print("Settlement: \n\(settlement)")
+            print("🔸 Settlement: \n\(settlement)")
         }
     }
     
     func carrier() {
         fetchData { client in
-            return CarrierService(
-                client: client,
-                apikey: self.key
-            )
+            return CarrierService(client: client)
         } task: { service in
             let carriers = try await service.getCarrier(
                 code: "TK",
                 system: "iata"
             )
-            print("Carriers: \n\(carriers)")
+            print("🔸 Carriers: \n\(carriers)")
         }
     }
     
     func copyright() {
         fetchData { client in
-            return CopyrightService(
-                client: client,
-                apikey: self.key
-            )
+            return CopyrightService(client: client)
         } task: { service in
             let copyright = try await service.getCopyright()
-            print("Copyright: \n\(copyright)")
+            print("🔸 Copyright: \n\(copyright)")
         }
     }
     
     func search() {
         fetchData { client in
-            return SearchService(
-                client: client,
-                apikey: self.key
-            )
+            return SearchService(client: client)
         } task: { service in
             let search = try await service.search(
                 from: "c146",
                 to: "c213",
                 date: "2025-02-10"
             )
-            print("Search: \n\(search)")
+            print("🔸 Search: \n\(search)")
         }
     }
     
     func schedule() {
         fetchData { client in
-            return ScheduleService(
-                client: client,
-                apikey: self.key
-            )
+            return ScheduleService(client: client)
         } task: { service in
             let schedule = try await service.schedule(
                 station: "s9612374",
                 date: "2025-02-11"
             )
-            print("Schedule: \n\(schedule)")
+            print("🔸 Schedule: \n\(schedule)")
         }
     }
     
     func thread() {
         fetchData { client in
-            return ThreadService(
-                client: client,
-                apikey: self.key
-            )
+            return ThreadService(client: client)
         } task: { service in
             let thread = try await service.thread(uid: "028S_3_2")
-            print("Thread: \n\(thread)")
+            print("🔸 Thread: \n\(thread)")
         }
     }
             
     func stationsList() {
         fetchData { client in
-            return StationsListService(
-                client: client,
-                apikey: self.key
-            )
+            return StationsListService(client: client)
         } task: { service in
             print("Fetching stations list...")
             
@@ -154,7 +131,7 @@ final class Services {
                 print("No countries found")
                 return
             }
-            print("Stations list: \n Example \n Found \(countries.count) countries")
+            print("🔸 Stations list: \n Example \n Found \(countries.count) countries")
         }
     }
 }
