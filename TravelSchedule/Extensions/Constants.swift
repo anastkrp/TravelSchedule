@@ -11,4 +11,9 @@ struct Constants {
     static let apiKey = "f9d243cc-d8fb-4ccb-aa8f-7a7db81dbc20"
     
     static let bufferSize: Int = 40 * 1024 * 1024
+    
+    static let cornerRadius: CGFloat = 20.0
+    
+    static let textHeight: CGFloat = 48.0
+    static let swapButtonSize: CGFloat = 36.0
 }
