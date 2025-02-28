@@ -8,20 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var router = Router()
     
     var body: some View {
-        TabView {
-            ScheduleView()
-                .tabItem {
-                    Image("Schedule")
+        NavigationStack(path: $router.path) {
+            TabView {
+                ScheduleView()
+                    .tabItem {
+                        Image("Schedule")
+                    }
+                
+                SettingsView()
+                    .tabItem {
+                        Image("Settings")
+                    }
+            }
+            .tint(Color("BlackTS"))
+            .navigationDestination(for: Route.self) { destination in
+                switch destination {
+                case .citySelection:
+                    CitiesView()
+                case .stationSelection(let stations):
+                    StationsView(stations: stations)
                 }
-            
-            SettingsView()
-                .tabItem {
-                    Image("Settings")
-                }
+            }
         }
-        .tint(Color("BlackTS"))
+        .environmentObject(router)
     }
 }
 

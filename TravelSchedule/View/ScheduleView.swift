@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ScheduleView: View {
-    
     @ObservedObject var viewModel = ScheduleViewModel()
+    @EnvironmentObject var router: Router
     
     var body: some View {
         VStack {
             DestinationView(
                 from: viewModel.from,
                 to: viewModel.to,
-                didTapFrom: {},
-                didTapTo: {},
+                didTapFrom: { router.push(.citySelection) },
+                didTapTo: { router.push(.citySelection) },
                 didTapSwapButton: { viewModel.swapDestination() }
             )
             .padding()
