@@ -8,17 +8,30 @@
 import SwiftUI
 
 struct StationsView: View {
-    @EnvironmentObject var router: Router
+    @EnvironmentObject private var viewModel: DirectionViewModel
+    @EnvironmentObject private var router: Router
+    @State private var searchText = String()
+    private var searchResults: [String] {
+        searchText.isEmpty
+        ? stations
+        : stations.filter { $0.contains(searchText) }
+    }
     let stations: [String]
     
     var body: some View {
         VStack {
-            Button("back", action: {
-                router.pop()
-            })
-            Button("root", action: {
-                router.popToRoot()
-            })
+            SearchBar(searchText: $searchText)
+            ListCityStation(isEmptyData: searchResults.isEmpty, emptyTitle: "Станция не найдена") {
+                ForEach(searchResults, id: \.self) { station in
+                    CityStationRow(titleRow: station)
+                        .onTapGesture(perform: {
+                            viewModel.stationSelected = station
+                            viewModel.addDestination()
+                            router.popToRoot()
+                        })
+                }
+            }
+            .modifier(NavigationBarStyle(title: "Выбор станции"))
         }
     }
 }

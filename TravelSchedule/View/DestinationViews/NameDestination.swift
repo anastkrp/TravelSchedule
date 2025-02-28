@@ -13,6 +13,7 @@ struct NameDestination: View {
     
     var body: some View {
         Text(name.isEmpty ? placeholder : name)
+            .lineLimit(1)
             .foregroundColor(name.isEmpty ? Color("GrayUniversal") : Color("BlackUniversal"))
             .frame(
                 maxWidth: .infinity,

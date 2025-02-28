@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var router = Router()
+    @StateObject private var router = Router()
+    @StateObject private var viewModel = DirectionViewModel()
     
     var body: some View {
         NavigationStack(path: $router.path) {
             TabView {
-                ScheduleView()
+                MainView()
                     .tabItem {
                         Image("Schedule")
                     }
@@ -34,6 +35,7 @@ struct ContentView: View {
             }
         }
         .environmentObject(router)
+        .environmentObject(viewModel)
     }
 }
 
