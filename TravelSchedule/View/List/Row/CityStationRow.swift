@@ -24,6 +24,7 @@ struct CityStationRow: View {
         }
         .padding(.horizontal)
         .frame(height: Constants.rowHeight)
+        .contentShape(Rectangle())
     }
 }
 

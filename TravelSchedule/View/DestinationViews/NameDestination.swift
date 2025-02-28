@@ -21,6 +21,7 @@ struct NameDestination: View {
                 alignment: .leading
             )
             .padding(.horizontal)
+            .contentShape(Rectangle())
     }
 }
 
