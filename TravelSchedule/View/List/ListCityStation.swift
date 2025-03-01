@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ListCityStation<Content: View>: View{
+public struct ListCityStation<Content: View>: View {
     let isEmptyData: Bool
     let emptyTitle: String
     @ViewBuilder var content: Content

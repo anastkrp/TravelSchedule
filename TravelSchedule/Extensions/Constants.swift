@@ -24,4 +24,5 @@ struct Constants {
     static let iconHeight: CGFloat = 22.0
     static let iconWidthHeight: CGFloat = 17.0
     static let searchBarHeight: CGFloat = 36.0
+    static let imageErrorSize: CGFloat = 223.0
 }

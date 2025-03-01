@@ -12,7 +12,7 @@ struct MainView: View {
     @EnvironmentObject private var router: Router
     
     var body: some View {
-        VStack {
+        VStackErrorHandling(errorType: .none) {
             DestinationView(
                 from: viewModel.from,
                 to: viewModel.to,
