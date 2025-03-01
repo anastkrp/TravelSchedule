@@ -1,0 +1,50 @@
+{
+  "sourceLanguage" : "ru",
+  "strings" : {
+    "%lld hour" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld часа"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld часов"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld час"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld часа"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "search" : {
+
+    },
+    "SettingsView" : {
+
+    },
+    "Введите запрос" : {
+
+    }
+  },
+  "version" : "1.0"
+}

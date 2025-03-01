@@ -22,4 +22,25 @@ struct MockData {
             stations: ["Аэропорт Сочи", "Станция Сочи", "Хоста"]
         )
     ]
+    
+    static let carriersMock: [Carrier] = [
+        Carrier(
+            carrierTitle: "РЖД",
+            carrierLogo: "RZD",
+            departureDay: "14 января",
+            departureTime: "22:30",
+            arrivalTime: "08:15",
+            duration: 72000,
+            transfer: "С пересадкой в Костроме"
+        ),
+        Carrier(
+            carrierTitle: "ФГК",
+            carrierLogo: "FGC",
+            departureDay: "15 января",
+            departureTime: "01:15",
+            arrivalTime: "09:00",
+            duration: 32400,
+            transfer: ""
+        )
+    ]
 }

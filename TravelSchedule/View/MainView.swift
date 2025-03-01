@@ -27,6 +27,9 @@ struct MainView: View {
                 didTapSwapButton: { viewModel.swapDestination() }
             )
             .padding()
+            Button("search") {
+                router.push(.carriers(viewModel.from))
+            }
         }
     }
 }

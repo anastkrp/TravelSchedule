@@ -31,6 +31,8 @@ struct ContentView: View {
                     CitiesView()
                 case .stationSelection(let stations):
                     StationsView(stations: stations)
+                case .carriers(let destination):
+                    CarriersView(viewModel: CarriersViewModel(destinationTitle: destination))
                 }
             }
         }
