@@ -37,4 +37,8 @@ final class DirectionViewModel: ObservableObject {
         citySelected = ""
         stationSelected = ""
     }
+    
+    func searchCarriers() -> String {
+        from + " → " + to
+    }
 }

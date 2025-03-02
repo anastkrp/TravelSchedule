@@ -28,7 +28,7 @@ struct MainView: View {
             )
             .padding()
             Button("search") {
-                router.push(.carriers(viewModel.from))
+                router.push(.carriers(viewModel.searchCarriers()))
             }
         }
     }

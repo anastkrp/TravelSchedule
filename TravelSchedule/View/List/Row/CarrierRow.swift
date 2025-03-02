@@ -16,40 +16,45 @@ struct CarrierRow: View {
                 Image(carrier.carrierLogo)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 38, height: 38)
+                    .frame(width: Constants.logoCarrierSize, height: Constants.logoCarrierSize)
                 VStack(alignment: .leading) {
                     Text(carrier.carrierTitle)
+                        .foregroundStyle(.blackUniversal)
                     Text(carrier.transfer)
                         .font(.caption)
-                        .foregroundColor(.redUniversal)
+                        .foregroundStyle(.redUniversal)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 Text(carrier.departureDay)
                     .font(.caption)
-                    .tracking(0.4)
+                    .foregroundStyle(.blackUniversal)
+                    .tracking(Constants.letterSpacing)
                     
             }
-            .padding([.top, .leading, .trailing], 14.0)
+            .padding([.top, .leading, .trailing], Constants.paddingMedium)
             
             HStack {
                 Text(carrier.departureTime)
+                    .foregroundStyle(.blackUniversal)
                 VStack {
                     Divider()
                         .overlay(.grayUniversal)
                 }
                 Text("\(carrier.duration / 3600) hour")
                     .font(.caption)
-                    .tracking(0.4)
+                    .foregroundStyle(.blackUniversal)
+                    .tracking(Constants.letterSpacing)
                 VStack {
                     Divider()
                         .overlay(.grayUniversal)
                 }
                 Text(carrier.arrivalTime)
+                    .foregroundStyle(.blackUniversal)
             }
-            .padding(.all, 14.0)
+            .padding(.all, Constants.paddingMedium)
         }
         .background() {
-            RoundedRectangle(cornerRadius: 24)
+            RoundedRectangle(cornerRadius: Constants.cornerRadiusLarge)
                 .fill(.lightGrayTS)
         }
         .padding(.horizontal)
