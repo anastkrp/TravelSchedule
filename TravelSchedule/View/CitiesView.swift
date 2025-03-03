@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CitiesView: View {
-    @EnvironmentObject private var viewModel: DirectionViewModel
+    @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var router: Router
     @State private var searchText = String()
     private var searchResults: [CityStations] {
@@ -20,7 +20,10 @@ struct CitiesView: View {
     var body: some View {
         VStack() {
             SearchBar(searchText: $searchText)
-            ListCityStation(isEmptyData: searchResults.isEmpty, emptyTitle: "Город не найден") {
+            ListCityStation(
+                isEmptyData: searchResults.isEmpty,
+                emptyTitle: "Город не найден"
+            ) {
                 ForEach(searchResults) { cities in
                     CityStationRow(titleRow: cities.city)
                         .onTapGesture {
@@ -32,9 +35,7 @@ struct CitiesView: View {
             .modifier(NavigationBarStyle(title: "Выбор города"))
         }
         .onAppear {
-            if viewModel.cityStations.isEmpty {
-                viewModel.loadData()
-            }
+            viewModel.loadCityStations()
         }
     }
 }

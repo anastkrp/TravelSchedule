@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var router = Router()
-    @StateObject private var viewModel = DirectionViewModel()
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
         NavigationStack(path: $router.path) {
@@ -31,8 +31,10 @@ struct ContentView: View {
                     CitiesView()
                 case .stationSelection(let stations):
                     StationsView(stations: stations)
-                case .carriers(let destination):
-                    CarriersView(viewModel: CarriersViewModel(destinationTitle: destination))
+                case .carriers:
+                    CarriersView()
+                case .filter:
+                    FilterView()
                 }
             }
         }

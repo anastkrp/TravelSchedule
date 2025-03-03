@@ -40,7 +40,7 @@ struct CarrierRow: View {
                     Divider()
                         .overlay(.grayUniversal)
                 }
-                Text("\(carrier.duration / 3600) hour")
+                Text("\(carrier.duration / Constants.secondsInHour) hour")
                     .font(.caption)
                     .foregroundStyle(.blackUniversal)
                     .tracking(Constants.letterSpacing)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject private var viewModel: DirectionViewModel
+    @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var router: Router
     
     var body: some View {
@@ -27,8 +27,20 @@ struct MainView: View {
                 didTapSwapButton: { viewModel.swapDestination() }
             )
             .padding()
-            Button("search") {
-                router.push(.carriers(viewModel.searchCarriers()))
+            
+            if viewModel.onSearch {
+                Button(action: {
+                    router.push(.carriers)
+                }) {
+                    Text("Найти")
+                        .fontWeight(.bold)
+                        .foregroundStyle(.whiteUniversal)
+                }
+                .frame(width: Constants.buttonWidth, height: Constants.buttonHeight)
+                .background() {
+                    RoundedRectangle(cornerRadius: Constants.cornerRadiusMedium)
+                        .fill(.blueUniversal)
+                }
             }
         }
     }

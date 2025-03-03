@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CarriersView: View {
-    @StateObject var viewModel: CarriersViewModel
+    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var router: Router
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -19,24 +20,26 @@ struct CarriersView: View {
                     .padding()
                 
                 ListCarrier(
-                    isEmptyData: viewModel.carriers.isEmpty,
+                    isEmptyData: viewModel.filteredCarriers.isEmpty,
                     emptyTitle: "Вариантов нет"
                 ) {
-                    ForEach(viewModel.carriers) { carrier in
+                    ForEach(viewModel.filteredCarriers) { carrier in
                         CarrierRow(carrier: carrier)
                     }
                 }
             }
-            
-            Button(action: {}) {
+
+            Button(action: { router.push(.filter) }) {
                 HStack {
                     Text("Уточнить время")
                         .fontWeight(.bold)
                         .foregroundStyle(.whiteUniversal)
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .frame(width: Constants.iconSizeSmall, height: Constants.iconSizeSmall)
-                        .foregroundStyle(.redUniversal)
+                    if viewModel.isActiveFilter {
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: Constants.iconSizeSmall, height: Constants.iconSizeSmall)
+                            .foregroundStyle(.redUniversal)
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: Constants.buttonHeight)
                 .background() {
@@ -48,5 +51,8 @@ struct CarriersView: View {
             .padding(.bottom, Constants.paddingLarge)
         }
         .modifier(NavigationBarStyle(title: ""))
+        .onAppear {
+            viewModel.loadCarriers()
+        }
     }
 }
