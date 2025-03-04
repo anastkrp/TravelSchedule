@@ -14,7 +14,7 @@ struct SearchBar: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: Constants.searchBarCornerRadius)
-                .fill(.lightGrayTS)
+                .fill(.grayTS)
                 .frame(height: Constants.searchBarHeight)
             
             HStack {

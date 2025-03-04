@@ -17,6 +17,10 @@ struct CarrierInfoView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity, maxHeight: 104)
+                .background {
+                    RoundedRectangle(cornerRadius: Constants.cornerRadiusLarge)
+                        .fill(.whiteUniversal)
+                }
                 .padding()
             
             Text(viewModel.carrierInfo.title)
