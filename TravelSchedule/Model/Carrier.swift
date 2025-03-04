@@ -9,6 +9,7 @@ import Foundation
 
 struct Carrier: Identifiable, Hashable {
     let id = UUID()
+    let code: Int
     let carrierTitle: String
     let carrierLogo: String
     let departureDay: String

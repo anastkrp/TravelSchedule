@@ -25,6 +25,7 @@ struct MockData {
     
     static let carriersMock: [Carrier] = [
         Carrier(
+            code: 1,
             carrierTitle: "РЖД",
             carrierLogo: "RZD",
             departureDay: "14 января",
@@ -34,6 +35,7 @@ struct MockData {
             transfer: "С пересадкой в Костроме"
         ),
         Carrier(
+            code: 2,
             carrierTitle: "ФГК",
             carrierLogo: "FGC",
             departureDay: "15 января",
@@ -41,6 +43,23 @@ struct MockData {
             arrivalTime: "09:00",
             duration: 32400,
             transfer: ""
+        )
+    ]
+    
+    static let carriersInfoMock: [CarrierInfo] = [
+        CarrierInfo(
+            code: 1,
+            title: "ОАО «РЖД»",
+            logo: "RZD",
+            phone: "+7 (904) 329-27-71",
+            email: "rzd@yandex.ru"
+        ),
+        CarrierInfo(
+            code: 2,
+            title: "АО «ФГК»",
+            logo: "FGC",
+            phone: "+7 (904) 329-27-71",
+            email: "fgc@yandex.ru"
         )
     ]
 }

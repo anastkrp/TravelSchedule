@@ -63,6 +63,7 @@ struct CarrierRow: View {
 
 #Preview {
     CarrierRow(carrier: .init(
+        code: 1,
         carrierTitle: "РЖД",
         carrierLogo: "rhk",
         departureDay: "14 января",

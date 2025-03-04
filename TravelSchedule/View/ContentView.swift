@@ -35,6 +35,8 @@ struct ContentView: View {
                     CarriersView()
                 case .filter:
                     FilterView()
+                case .carrierInfo(let code):
+                    CarrierInfoView(carrierCode: code)
                 }
             }
         }

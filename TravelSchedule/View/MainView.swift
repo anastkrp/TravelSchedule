@@ -35,11 +35,11 @@ struct MainView: View {
                     Text("Найти")
                         .fontWeight(.bold)
                         .foregroundStyle(.whiteUniversal)
-                }
-                .frame(width: Constants.buttonWidth, height: Constants.buttonHeight)
-                .background() {
-                    RoundedRectangle(cornerRadius: Constants.cornerRadiusMedium)
-                        .fill(.blueUniversal)
+                        .frame(width: Constants.buttonWidth, height: Constants.buttonHeight)
+                        .background() {
+                            RoundedRectangle(cornerRadius: Constants.cornerRadiusMedium)
+                                .fill(.blueUniversal)
+                        }
                 }
             }
         }

@@ -25,6 +25,9 @@ struct CarriersView: View {
                 ) {
                     ForEach(viewModel.filteredCarriers) { carrier in
                         CarrierRow(carrier: carrier)
+                            .onTapGesture {
+                                router.push(.carrierInfo(carrier.code))
+                            }
                     }
                 }
             }

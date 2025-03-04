@@ -12,4 +12,5 @@ enum Route: Hashable {
     case stationSelection([String])
     case carriers
     case filter
+    case carrierInfo(Int)
 }

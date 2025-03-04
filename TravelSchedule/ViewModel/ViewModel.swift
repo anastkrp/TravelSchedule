@@ -38,6 +38,8 @@ final class ViewModel: ObservableObject {
         }
     }
     
+    @Published var carrierInfo = CarrierInfo(code: 0, title: "", logo: "RZD", phone: "", email: "")
+    
     // MARK: - Load Data
     
     func loadCityStations() {
@@ -50,6 +52,13 @@ final class ViewModel: ObservableObject {
         if carriers.isEmpty {
             carriers = MockData.carriersMock
             filterCarriers()
+        }
+    }
+    
+    func loadCarrierInfo(code: Int) {
+        let mock = MockData.carriersInfoMock
+        if let foundCarrier = mock.first(where: { $0.code == code }) {
+            carrierInfo = foundCarrier
         }
     }
     
