@@ -10,9 +10,10 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var router: Router
+    @StateObject private var monitor = NetworkMonitor()
     
     var body: some View {
-        VStackErrorHandling(errorType: .none) {
+        VStackErrorHandling(errorType: monitor.isConnected ? .none : .noInternetConnection) {
             DestinationView(
                 from: viewModel.from,
                 to: viewModel.to,
