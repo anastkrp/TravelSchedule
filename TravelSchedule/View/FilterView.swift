@@ -50,6 +50,7 @@ struct FilterView: View {
             
             Spacer()
         }
+        .background(.whiteTS)
         .modifier(NavigationBarStyle(title: ""))
     }
 }

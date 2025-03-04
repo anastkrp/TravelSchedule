@@ -13,4 +13,5 @@ enum Route: Hashable {
     case carriers
     case filter
     case carrierInfo(Int)
+    case userAgreement
 }

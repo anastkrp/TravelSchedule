@@ -36,6 +36,7 @@ struct StationsView: View {
             }
             .modifier(NavigationBarStyle(title: "Выбор станции"))
         }
+        .background(.whiteTS)
     }
 }
 

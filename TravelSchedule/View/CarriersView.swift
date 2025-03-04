@@ -53,6 +53,7 @@ struct CarriersView: View {
             .padding(.horizontal)
             .padding(.bottom, Constants.paddingLarge)
         }
+        .background(.whiteTS)
         .modifier(NavigationBarStyle(title: ""))
         .onAppear {
             viewModel.loadCarriers()

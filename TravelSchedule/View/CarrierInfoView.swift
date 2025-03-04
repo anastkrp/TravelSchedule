@@ -35,6 +35,7 @@ struct CarrierInfoView: View {
             
             .modifier(NavigationBarStyle(title: "Информация о перевозчике"))
         }
+        .background(.whiteTS)
         .onAppear() {
             viewModel.loadCarrierInfo(code: carrierCode)
         }

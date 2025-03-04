@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("isDarkMode") private var isDarkModeEnabled: Bool = false
+    @EnvironmentObject private var router: Router
     
     var body: some View {
         VStack(spacing: 0.0) {
@@ -27,6 +28,10 @@ struct SettingsView: View {
                     .tint(.blackTS)
             }
             .padding()
+            .contentShape(Rectangle())
+            .onTapGesture {
+                router.push(.userAgreement)
+            }
             
             Spacer()
             
@@ -43,6 +48,7 @@ struct SettingsView: View {
                 .padding(.bottom, 24)
                 
         }
+        .background(.whiteTS)
     }
 }
 

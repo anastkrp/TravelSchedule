@@ -34,6 +34,7 @@ struct CitiesView: View {
             }
             .modifier(NavigationBarStyle(title: "Выбор города"))
         }
+        .background(.whiteTS)
         .onAppear {
             viewModel.loadCityStations()
         }

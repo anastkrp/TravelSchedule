@@ -37,6 +37,8 @@ struct ContentView: View {
                     FilterView()
                 case .carrierInfo(let code):
                     CarrierInfoView(carrierCode: code)
+                case .userAgreement:
+                    UserAgreementView()
                 }
             }
         }

@@ -29,11 +29,14 @@ public struct VStackErrorHandling<Content: View>: View {
                     .font(.system(size: 24, weight: .bold))
                     .padding(.vertical)
             }
-            .frame(maxHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.whiteTS)
         } else {
             VStack {
                 content
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.whiteTS)
         }
     }
 }
