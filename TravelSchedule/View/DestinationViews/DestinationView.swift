@@ -22,7 +22,7 @@ struct DestinationView: View {
                 NameDestination(name: to, placeholder: "Куда")
                     .onTapGesture(perform: didTapTo)
             }
-            .background(Color("WhiteUniversal"))
+            .background(.whiteUniversal)
             .cornerRadius(Constants.cornerRadius)
             .padding(.trailing)
             
@@ -35,7 +35,7 @@ struct DestinationView: View {
             }
         }
         .padding()
-        .background(Color("BlueUniversal"))
+        .background(.blueUniversal)
         .cornerRadius(Constants.cornerRadius)
     }
 }

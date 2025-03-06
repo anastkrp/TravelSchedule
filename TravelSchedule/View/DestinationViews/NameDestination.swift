@@ -14,7 +14,7 @@ struct NameDestination: View {
     var body: some View {
         Text(name.isEmpty ? placeholder : name)
             .lineLimit(1)
-            .foregroundColor(name.isEmpty ? Color("GrayUniversal") : Color("BlackUniversal"))
+            .foregroundColor(name.isEmpty ? .grayUniversal : .blackUniversal)
             .frame(
                 maxWidth: .infinity,
                 minHeight: Constants.textHeight,

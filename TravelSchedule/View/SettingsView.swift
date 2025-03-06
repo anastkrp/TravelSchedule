@@ -37,12 +37,12 @@ struct SettingsView: View {
             
             Text("Приложение использует API «Яндекс.Расписания»")
                 .font(.footnote)
-                .foregroundColor(Color("BlackTS"))
+                .foregroundColor(.blackTS)
                 .multilineTextAlignment(.center)
                 
             Text("Версия 1.0 (beta)")
                 .font(.footnote)
-                .foregroundColor(Color("BlackTS"))
+                .foregroundColor(.blackTS)
                 .multilineTextAlignment(.center)
                 .padding(.top)
                 .padding(.bottom, 24)

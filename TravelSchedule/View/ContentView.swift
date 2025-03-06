@@ -24,7 +24,7 @@ struct ContentView: View {
                         Image("Settings")
                     }
             }
-            .tint(Color("BlackTS"))
+            .tint(.blackTS)
             .navigationDestination(for: Route.self) { destination in
                 switch destination {
                 case .citySelection:
