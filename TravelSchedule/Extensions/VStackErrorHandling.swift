@@ -7,36 +7,30 @@
 
 import SwiftUI
 
-public struct VStackErrorHandling<Content: View>: View {
+struct VStackErrorHandling<Content: View>: View {
     let errorType: ErrorHandlingType?
     @ViewBuilder var content: Content
     
-    private var errorTitle: String {
-        errorType == .serverError ? "Ошибка сервера" : "Нет интернета"
-    }
-    private var errorImage: String {
-        errorType == .serverError ? "ServerError" : "NoInternet"
-    }
-    
     public var body: some View {
-        if errorType == .serverError || errorType == .noInternetConnection {
-            VStack {
-                Image(errorImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: Constants.imageErrorSize, height: Constants.imageErrorSize)
-                Text(errorTitle)
-                    .font(.system(size: 24, weight: .bold))
-                    .padding(.vertical)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.whiteTS)
-        } else {
+        ZStack {
             VStack {
                 content
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.whiteTS)
+            
+            VStack {
+                Image(errorType?.image ?? "ServerError")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: Constants.imageErrorSize, height: Constants.imageErrorSize)
+                Text(errorType?.title ?? "")
+                    .font(.system(size: 24, weight: .bold))
+                    .padding(.vertical)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.whiteTS)
+            .opacity(errorType == .serverError || errorType == .noInternetConnection ? 1 : 0)
         }
     }
 }

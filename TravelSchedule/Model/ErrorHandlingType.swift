@@ -10,4 +10,22 @@ import Foundation
 enum ErrorHandlingType {
     case serverError
     case noInternetConnection
+    
+    var title: String {
+        switch self {
+        case .serverError:
+            return "Ошибка сервера"
+        case .noInternetConnection:
+            return "Нет интернета"
+        }
+    }
+    
+    var image: String {
+        switch self {
+        case .serverError:
+            return "ServerError"
+        case .noInternetConnection:
+            return "NoInternet"
+        }
+    }
 }
