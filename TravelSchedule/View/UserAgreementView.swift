@@ -12,7 +12,7 @@ struct UserAgreementView: View {
     
     var body: some View {
         ZStack {
-            WebView(isLoading: $isLoading, url: URL(string: "https://yandex.ru/legal/practicum_offer")!)
+            WebView(isLoading: $isLoading, url: URL(string: "https://yandex.ru/legal/practicum_offer"))
                 .ignoresSafeArea(edges: .bottom)
                 .modifier(NavigationBarStyle(title: "Пользовательское соглашение"))
             

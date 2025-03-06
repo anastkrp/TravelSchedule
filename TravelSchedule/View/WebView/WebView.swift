@@ -10,7 +10,7 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     @Binding var isLoading: Bool
-    let url: URL
+    let url: URL?
     
     func makeUIView(context: Context) -> WKWebView {
         WKWebView()
@@ -21,15 +21,16 @@ struct WebView: UIViewRepresentable {
         webView.isOpaque = false
         webView.backgroundColor = .whiteTS
         
-        let request = URLRequest(url: url)
-        webView.load(request)
+        if let url = url {
+            webView.load(URLRequest(url: url))
+        }
     }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
     }
     
-    class Coordinator: NSObject, WKNavigationDelegate {
+    final class Coordinator: NSObject, WKNavigationDelegate {
         var parent: WebView
         
         init(parent: WebView) {
