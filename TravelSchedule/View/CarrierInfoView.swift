@@ -28,8 +28,8 @@ struct CarrierInfoView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.leading, .trailing, .bottom])
             
-            InfoRow(type: "mail", link: viewModel.carrierInfo.email)
-            InfoRow(type: "phone", link: viewModel.carrierInfo.phone)
+            InfoRow(type: InfoRowType.mail, link: viewModel.carrierInfo.email)
+            InfoRow(type: InfoRowType.phone, link: viewModel.carrierInfo.phone)
             
             Spacer()
             
