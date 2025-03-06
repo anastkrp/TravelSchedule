@@ -16,11 +16,10 @@ struct UserAgreementView: View {
                 .ignoresSafeArea(edges: .bottom)
                 .modifier(NavigationBarStyle(title: "Пользовательское соглашение"))
             
-            if isLoading {
-                ProgressView("Загрузка...")
-                    .progressViewStyle(.circular)
-                    .tint(.blackTS)
-            }
+            ProgressView("Загрузка...")
+                .progressViewStyle(.circular)
+                .tint(.blackTS)
+                .opacity(isLoading ? 1 : 0)
         }
         .background(.whiteTS)
     }

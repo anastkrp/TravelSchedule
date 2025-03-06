@@ -25,16 +25,15 @@ struct SearchBar: View {
                 
                 TextField("Введите запрос", text: $searchText)
                 
-                if !searchText.isEmpty {
-                    Button(action: {
-                        searchText.removeAll()
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .resizable()
-                            .frame(width: Constants.iconWidthHeight, height: Constants.iconWidthHeight)
-                            .foregroundColor(.grayUniversal)
-                    }
+                Button(action: {
+                    searchText.removeAll()
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .resizable()
+                        .frame(width: Constants.iconWidthHeight, height: Constants.iconWidthHeight)
+                        .foregroundColor(.grayUniversal)
                 }
+                .opacity(searchText.isEmpty ? 0 : 1)
             }
             .padding(.horizontal, Constants.paddingSmall)
         }

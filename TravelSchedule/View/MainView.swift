@@ -29,20 +29,19 @@ struct MainView: View {
             )
             .padding()
             
-            if viewModel.onSearch {
-                Button(action: {
-                    router.push(.carriers)
-                }) {
-                    Text("Найти")
-                        .fontWeight(.bold)
-                        .foregroundStyle(.whiteUniversal)
-                        .frame(width: Constants.buttonWidth, height: Constants.buttonHeight)
-                        .background() {
-                            RoundedRectangle(cornerRadius: Constants.cornerRadiusMedium)
-                                .fill(.blueUniversal)
-                        }
-                }
+            Button(action: {
+                router.push(.carriers)
+            }) {
+                Text("Найти")
+                    .fontWeight(.bold)
+                    .foregroundStyle(.whiteUniversal)
+                    .frame(width: Constants.buttonWidth, height: Constants.buttonHeight)
+                    .background() {
+                        RoundedRectangle(cornerRadius: Constants.cornerRadiusMedium)
+                            .fill(.blueUniversal)
+                    }
             }
+            .opacity(viewModel.onSearch ? 1 : 0)
         }
     }
 }

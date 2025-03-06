@@ -37,12 +37,11 @@ struct CarriersView: View {
                     Text("Уточнить время")
                         .fontWeight(.bold)
                         .foregroundStyle(.whiteUniversal)
-                    if viewModel.isActiveFilter {
-                        Image(systemName: "circle.fill")
-                            .resizable()
-                            .frame(width: Constants.iconSizeSmall, height: Constants.iconSizeSmall)
-                            .foregroundStyle(.redUniversal)
-                    }
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .frame(width: Constants.iconSizeSmall, height: Constants.iconSizeSmall)
+                        .foregroundStyle(.redUniversal)
+                        .opacity(viewModel.isActiveFilter ? 1 : 0)
                 }
                 .frame(maxWidth: .infinity, maxHeight: Constants.buttonHeight)
                 .background() {
