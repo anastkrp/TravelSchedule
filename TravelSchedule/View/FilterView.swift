@@ -31,7 +31,7 @@ struct FilterView: View {
                     Text("Ночь 00:00 - 06:00")
                 }
             }
-            .toggleStyle(CheckboxSquare())
+            .toggleStyle(Checkbox(checkboxType: .square))
             
             Text("Показывать варианты с пересадками")
                 .font(.system(size: 24, weight: .bold))
@@ -46,7 +46,7 @@ struct FilterView: View {
                     Text("Нет")
                 }
             }
-            .toggleStyle(CheckboxCircle())
+            .toggleStyle(Checkbox(checkboxType: .circle))
             
             Spacer()
         }

@@ -1,18 +1,20 @@
 //
-//  CheckboxSquare.swift
+//  Checkbox.swift
 //  TravelSchedule
 //
-//  Created by Anastasiia Ki on 03.03.2025.
+//  Created by Anastasiia Ki on 07.03.2025.
 //
 
 import SwiftUI
 
-struct CheckboxSquare: ToggleStyle {
+struct Checkbox: ToggleStyle {
+    let checkboxType: CheckboxType
+    
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
             Spacer()
-            Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
+            Image(systemName: checkboxType.checkboxImage(configuration.isOn))
                 .resizable()
                 .frame(width: Constants.iconSizeLarge, height: Constants.iconSizeLarge)
                 .tint(.blackTS)
