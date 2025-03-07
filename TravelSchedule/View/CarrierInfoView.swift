@@ -26,7 +26,7 @@ struct CarrierInfoView: View {
             Text(viewModel.carrierInfo.title)
                 .font(.system(size: 24, weight: .bold))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding([.leading, .trailing, .bottom])
+                .padding([.horizontal, .bottom])
             
             InfoRow(type: InfoRowType.mail, link: viewModel.carrierInfo.email)
             InfoRow(type: InfoRowType.phone, link: viewModel.carrierInfo.phone)

@@ -37,7 +37,7 @@ struct SearchBar: View {
             }
             .padding(.horizontal, Constants.paddingSmall)
         }
-        .padding([.leading, .bottom, .trailing])
+        .padding([.horizontal, .bottom])
     }
 }
 

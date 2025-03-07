@@ -18,7 +18,7 @@ struct CitiesView: View {
     }
     
     var body: some View {
-        VStack() {
+        VStack {
             SearchBar(searchText: $searchText)
             ListCityStation(
                 isEmptyData: searchResults.isEmpty,

@@ -31,7 +31,7 @@ struct CarrierRow: View {
                     .tracking(Constants.letterSpacing)
                     
             }
-            .padding([.top, .leading, .trailing], Constants.paddingMedium)
+            .padding([.top, .horizontal], Constants.paddingMedium)
             
             HStack {
                 Text(carrier.departureTime)
@@ -51,7 +51,7 @@ struct CarrierRow: View {
                 Text(carrier.arrivalTime)
                     .foregroundStyle(.blackUniversal)
             }
-            .padding(.all, Constants.paddingMedium)
+            .padding(Constants.paddingMedium)
         }
         .background() {
             RoundedRectangle(cornerRadius: Constants.cornerRadiusLarge)
