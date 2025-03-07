@@ -8,14 +8,18 @@
 import Foundation
 
 struct Filter {
-    var morning: Bool
-    var afternoon: Bool
-    var evening: Bool
-    var night: Bool
-    var transferYes: Bool
-    var transferNo: Bool
+    let morning: Bool
+    let afternoon: Bool
+    let evening: Bool
+    let night: Bool
+    let transferYes: Bool
+    let transferNo: Bool
     
-    func isActive() -> Bool {
-        return morning || afternoon || evening || night || transferYes || transferNo
+    var isActive: Bool {
+        morning || afternoon || evening || night || transferYes || transferNo
     }
+}
+
+enum FilterType {
+    case morning, afternoon, evening, night, transferYes, transferNo
 }

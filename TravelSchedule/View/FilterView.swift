@@ -18,16 +18,28 @@ struct FilterView: View {
                 .padding()
             
             Group {
-                Toggle(isOn: $viewModel.filter.morning) {
+                Toggle(isOn: Binding(
+                    get: { viewModel.filter.morning },
+                    set: { _ in viewModel.filterSelected(.morning) }
+                )) {
                     Text("Утро 06:00 - 12:00")
                 }
-                Toggle(isOn: $viewModel.filter.afternoon) {
+                Toggle(isOn: Binding(
+                    get: { viewModel.filter.afternoon },
+                    set: { _ in viewModel.filterSelected(.afternoon) }
+                )) {
                     Text("День 12:00 - 18:00")
                 }
-                Toggle(isOn: $viewModel.filter.evening) {
+                Toggle(isOn: Binding(
+                    get: { viewModel.filter.evening },
+                    set: { _ in viewModel.filterSelected(.evening) }
+                )) {
                     Text("Вечер 18:00 - 00:00")
                 }
-                Toggle(isOn: $viewModel.filter.night) {
+                Toggle(isOn: Binding(
+                    get: { viewModel.filter.night },
+                    set: { _ in viewModel.filterSelected(.night) }
+                )) {
                     Text("Ночь 00:00 - 06:00")
                 }
             }
@@ -39,10 +51,16 @@ struct FilterView: View {
                 .padding()
             
             Group {
-                Toggle(isOn: $viewModel.filter.transferYes) {
+                Toggle(isOn: Binding(
+                    get: { viewModel.filter.transferYes },
+                    set: { _ in viewModel.filterSelected(.transferYes) }
+                )) {
                     Text("Да")
                 }
-                Toggle(isOn: $viewModel.filter.transferNo) {
+                Toggle(isOn: Binding(
+                    get: { viewModel.filter.transferNo },
+                    set: { _ in viewModel.filterSelected(.transferNo) }
+                )) {
                     Text("Нет")
                 }
             }

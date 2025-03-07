@@ -33,7 +33,7 @@ final class ViewModel: ObservableObject {
         transferNo: false
     ) {
         didSet {
-            isActiveFilter = filter.isActive()
+            isActiveFilter = filter.isActive
             filterCarriers()
         }
     }
@@ -90,6 +90,17 @@ final class ViewModel: ObservableObject {
     }
     
     // MARK: -  FilterView
+    
+    func filterSelected(_ type: FilterType) {
+        filter = Filter(
+            morning: type == .morning ? !filter.morning : filter.morning,
+            afternoon: type == .afternoon ? !filter.afternoon : filter.afternoon,
+            evening: type == .evening ? !filter.evening : filter.evening,
+            night: type == .night ? !filter.night : filter.night,
+            transferYes: type == .transferYes ? !filter.transferYes : filter.transferYes,
+            transferNo: type == .transferNo ? !filter.transferNo : filter.transferNo
+        )
+    }
     
     func filterCarriers() {
         if isActiveFilter {
