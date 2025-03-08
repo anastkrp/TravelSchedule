@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FilterView: View {
     @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var router: Router
     
     var body: some View {
         VStack(spacing: 0) {
@@ -67,6 +68,22 @@ struct FilterView: View {
             .toggleStyle(Checkbox(checkboxType: .circle))
             
             Spacer()
+            
+            Button(action: { router.pop() }) {
+                HStack {
+                    Text("Применить")
+                        .fontWeight(.bold)
+                        .foregroundStyle(.whiteUniversal)
+                }
+                .frame(maxWidth: .infinity, maxHeight: Constants.buttonHeight)
+                .background() {
+                    RoundedRectangle(cornerRadius: Constants.cornerRadiusMedium)
+                        .fill(.blueUniversal)
+                }
+            }
+            .padding(.horizontal)
+            .padding(.bottom, Constants.paddingLarge)
+            .opacity(viewModel.isActiveFilter ? 1 : 0)
         }
         .background(.whiteTS)
         .modifier(NavigationBarStyle(title: ""))
