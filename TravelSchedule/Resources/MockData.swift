@@ -63,36 +63,71 @@ struct MockData {
         )
     ]
     
-    static let storiesMock: [Story] = [
-        Story(title: "Text",
-              description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
-              imageFull: "storyFull_1",
-              imageSmall: "storySmall_1",
-              isSeen: false
-             ),
-        Story(title: "Text Text",
-              description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
-              imageFull: "storyFull_2",
-              imageSmall: "storySmall_2",
-              isSeen: false
-             ),
-        Story(title: "Text Text Text",
-              description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
-              imageFull: "storyFull_3",
-              imageSmall: "storySmall_3",
-              isSeen: true
-             ),
-        Story(title: "Text Text Text Text",
-              description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
-              imageFull: "storyFull_4",
-              imageSmall: "storySmall_4",
-              isSeen: false
-             ),
-        Story(title: "Text Text Text Text Text",
-              description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
-              imageFull: "storyFull_5",
-              imageSmall: "storySmall_5",
-              isSeen: false
-             )
+    static var storiesMock: [Stories] = [
+        Stories(
+            storyPreviewImage: "storySmall_1",
+            stories: [
+                Story(title: "Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_1"
+                     ),
+                Story(title: "Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_1.2"
+                     )
+                ],
+            isSeen: false),
+        Stories(
+            storyPreviewImage: "storySmall_2",
+            stories: [
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_2"
+                     ),
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_2.2"
+                     )
+                ],
+            isSeen: false),
+        Stories(
+            storyPreviewImage: "storySmall_3",
+            stories: [
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_3"
+                     ),
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_3.2"
+                     )
+                ],
+            isSeen: true),
+        Stories(
+            storyPreviewImage: "storySmall_4",
+            stories: [
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_4"
+                     ),
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_4.2"
+                     )
+                ],
+            isSeen: false),
+        Stories(
+            storyPreviewImage: "storySmall_5",
+            stories: [
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_5"
+                     ),
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_5.2"
+                     )
+                ],
+            isSeen: false)
     ]
 }

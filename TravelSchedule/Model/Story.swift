@@ -12,6 +12,11 @@ struct Story: Identifiable {
     let title: String
     let description: String
     let imageFull: String
-    let imageSmall: String
-    let isSeen: Bool
+}
+
+struct Stories: Identifiable {
+    let id = UUID()
+    let storyPreviewImage: String
+    let stories: [Story]
+    var isSeen: Bool
 }

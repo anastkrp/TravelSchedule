@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct StoriesPreview: View {
-    let stories: [Story]
+    let stories: [Stories]
     let didTapStory: () -> Void
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(stories) { story in
-                    storyImage(story.imageSmall, isSeen: story.isSeen)
+                    storyImage(story.storyPreviewImage, isSeen: story.isSeen)
                         .onTapGesture {
                             didTapStory()
                         }
                         .overlay {
                             VStack {
                                 Spacer()
-                                storyTitle(story.title)
+                                storyTitle(story.stories.isEmpty ? "" : story.stories[0].title)
                             }
                         }
                         .opacity(story.isSeen ? 0.5 : 1.0)
