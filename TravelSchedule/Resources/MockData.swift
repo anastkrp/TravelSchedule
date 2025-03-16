@@ -67,27 +67,32 @@ struct MockData {
         Story(title: "Text",
               description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
               imageFull: "storyFull_1",
-              imageSmall: "storySmall_1"
+              imageSmall: "storySmall_1",
+              isSeen: false
              ),
         Story(title: "Text Text",
               description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
               imageFull: "storyFull_2",
-              imageSmall: "storySmall_2"
+              imageSmall: "storySmall_2",
+              isSeen: false
              ),
         Story(title: "Text Text Text",
               description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
               imageFull: "storyFull_3",
-              imageSmall: "storySmall_3"
+              imageSmall: "storySmall_3",
+              isSeen: true
              ),
         Story(title: "Text Text Text Text",
               description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
               imageFull: "storyFull_4",
-              imageSmall: "storySmall_4"
+              imageSmall: "storySmall_4",
+              isSeen: false
              ),
         Story(title: "Text Text Text Text Text",
               description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
               imageFull: "storyFull_5",
-              imageSmall: "storySmall_5"
+              imageSmall: "storySmall_5",
+              isSeen: false
              )
     ]
 }

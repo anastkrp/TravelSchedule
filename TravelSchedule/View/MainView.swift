@@ -14,6 +14,11 @@ struct MainView: View {
     
     var body: some View {
         VStackErrorHandling(errorType: monitor.isConnected ? .none : .noInternetConnection) {
+            StoriesPreview(
+                stories: MockData.storiesMock,
+                didTapStory: {}
+            )
+            
             DestinationView(
                 from: viewModel.from,
                 to: viewModel.to,
@@ -27,7 +32,8 @@ struct MainView: View {
                 },
                 didTapSwapButton: { viewModel.swapDestination() }
             )
-            .padding()
+            .padding(.horizontal)
+            .padding(.top, 20)
             
             Button(action: {
                 router.push(.carriers)
@@ -42,6 +48,8 @@ struct MainView: View {
                     }
             }
             .opacity(viewModel.onSearch ? 1 : 0)
+            
+            Spacer()
         }
     }
 }
