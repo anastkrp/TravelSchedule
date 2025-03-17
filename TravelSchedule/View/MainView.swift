@@ -10,13 +10,16 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var router: Router
+    @EnvironmentObject private var storiesViewModel: StoriesViewModel
     @StateObject private var monitor = NetworkMonitor()
     
     var body: some View {
         VStackErrorHandling(errorType: monitor.isConnected ? .none : .noInternetConnection) {
             StoriesPreview(
-                stories: MockData.storiesMock,
-                didTapStory: {}
+                storyCollection: storiesViewModel.storyCollection,
+                didTapStory: { id in
+                    router.push(.story(id))
+                }
             )
             
             DestinationView(

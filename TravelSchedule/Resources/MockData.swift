@@ -63,8 +63,8 @@ struct MockData {
         )
     ]
     
-    static var storiesMock: [Stories] = [
-        Stories(
+    static var storiesMock: [StoryCollection] = [
+        StoryCollection(
             storyPreviewImage: "storySmall_1",
             stories: [
                 Story(title: "Text",
@@ -77,7 +77,7 @@ struct MockData {
                      )
                 ],
             isSeen: false),
-        Stories(
+        StoryCollection(
             storyPreviewImage: "storySmall_2",
             stories: [
                 Story(title: "Text Text",
@@ -90,7 +90,7 @@ struct MockData {
                      )
                 ],
             isSeen: false),
-        Stories(
+        StoryCollection(
             storyPreviewImage: "storySmall_3",
             stories: [
                 Story(title: "Text Text",
@@ -103,7 +103,7 @@ struct MockData {
                      )
                 ],
             isSeen: true),
-        Stories(
+        StoryCollection(
             storyPreviewImage: "storySmall_4",
             stories: [
                 Story(title: "Text Text",
@@ -116,7 +116,7 @@ struct MockData {
                      )
                 ],
             isSeen: false),
-        Stories(
+        StoryCollection(
             storyPreviewImage: "storySmall_5",
             stories: [
                 Story(title: "Text Text",

@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var router = Router()
     @StateObject private var viewModel = ViewModel()
+    @StateObject private var storiesViewModel = StoriesViewModel()
     
     var body: some View {
         NavigationStack(path: $router.path) {
@@ -39,11 +40,14 @@ struct ContentView: View {
                     CarrierInfoView(carrierCode: code)
                 case .userAgreement:
                     UserAgreementView()
+                case .story(let idStory):
+                    StoriesView(idStory: idStory)
                 }
             }
         }
         .environmentObject(router)
         .environmentObject(viewModel)
+        .environmentObject(storiesViewModel)
     }
 }
 

@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct StoriesPreview: View {
-    let stories: [Stories]
-    let didTapStory: () -> Void
+    let storyCollection: [StoryCollection]
+    let didTapStory: (UUID) -> Void
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                ForEach(stories) { story in
+                ForEach(storyCollection) { story in
                     storyImage(story.storyPreviewImage, isSeen: story.isSeen)
                         .onTapGesture {
-                            didTapStory()
+                            didTapStory(story.id)
                         }
                         .overlay {
                             VStack {
@@ -55,8 +55,4 @@ struct StoriesPreview: View {
             .padding(.horizontal, Constants.paddingSmall)
             .padding(.bottom, 12)
     }
-}
-
-#Preview {
-    StoriesPreview(stories: MockData.storiesMock, didTapStory: {})
 }

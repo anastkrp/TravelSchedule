@@ -14,7 +14,7 @@ struct Story: Identifiable {
     let imageFull: String
 }
 
-struct Stories: Identifiable {
+struct StoryCollection: Identifiable {
     let id = UUID()
     let storyPreviewImage: String
     let stories: [Story]
