@@ -102,7 +102,7 @@ struct MockData {
                       imageFull: "storyFull_3.2"
                      )
                 ],
-            isSeen: true),
+            isSeen: false),
         StoryCollection(
             storyPreviewImage: "storySmall_4",
             stories: [

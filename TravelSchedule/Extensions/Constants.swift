@@ -18,6 +18,7 @@ struct Constants {
     static let cornerRadiusLarge: CGFloat = 24.0
     static let searchBarCornerRadius: CGFloat = 10.0
     static let storyImageCornerRadius: CGFloat = 40.0
+    static let progressCornerRadius: CGFloat = 6.0
     
     static let letterSpacing: CGFloat = 0.4
     static let lineLimitSmall: Int = 2
@@ -42,4 +43,5 @@ struct Constants {
     static let logoCarrierSize: CGFloat = 38.0
     static let storySmallWidth: CGFloat = 92.0
     static let storySmallHeight: CGFloat = 140.0
+    static let progressHeight: CGFloat = 6.0
 }
