@@ -8,48 +8,67 @@
 import SwiftUI
 
 struct StoriesView: View {
-    @EnvironmentObject var router: Router
     @EnvironmentObject private var storiesViewModel: StoriesViewModel
-    let idStory: UUID
-    private var timerConfiguration: TimerConfiguration { .init(storiesCount: storiesViewModel.numberOfSections) }
-
+    @State private var dragValue: Double = 0.0
+    
+    private var timerConfiguration: TimerConfiguration {
+        .init(storiesCount: storiesViewModel.numberOfSections)
+    }
+    
+    private var swipeClose: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                if value.translation.height > 0.0 {
+                    withAnimation {
+                        dragValue = value.translation.height
+                    }
+                }
+            }
+            .onEnded { value in
+                if value.translation.height > Constants.dragIndicatorSize {
+                    storiesViewModel.isPresented = false
+                } else {
+                    withAnimation {
+                        dragValue = 0
+                    }
+                }
+            }
+    }
+    
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Color.blackUniversal
                 .ignoresSafeArea()
             
-            StoriesTabView(
-                currentStoryIndex: $storiesViewModel.currentStoryIndex,
-                stories: storiesViewModel.getCurrentStory(idStory)
-            )
-            .onChange(of: storiesViewModel.currentStoryIndex) {
-                storiesViewModel.didChangeStoryIndex($0)
+            Group {
+                StoriesTabView(
+                    currentStoryIndex: $storiesViewModel.currentStoryIndex,
+                    stories: storiesViewModel.getCurrentStory()
+                )
+                .onChange(of: storiesViewModel.currentStoryIndex) {
+                    storiesViewModel.didChangeStoryIndex($0)
+                }
+                
+                StoriesProgressView(
+                    storiesCount: storiesViewModel.numberOfSections,
+                    timerConfiguration: timerConfiguration,
+                    progress: $storiesViewModel.progress
+                )
+                .onChange(of: storiesViewModel.progress) {
+                    storiesViewModel.didChangeProgress($0)
+                    storiesViewModel.isCompletedViewStory()
+                }
+                
+                CloseButton()
+                    .padding(.top, Constants.paddingTop)
+                    .padding(.trailing, Constants.paddingTrailing)
             }
-            
-            StoriesProgressView(
-                storiesCount: storiesViewModel.numberOfSections,
-                timerConfiguration: timerConfiguration,
-                progress: $storiesViewModel.progress
-            )
-            .onChange(of: storiesViewModel.progress) {
-                storiesViewModel.didChangeProgress($0)
-                isCompletedViewStory($0)
-            }
-            
-            CloseButton()
-                .padding(.top, Constants.paddingTop)
-                .padding(.trailing, Constants.paddingTrailing)
+            .opacity(1 - (dragValue / Constants.opacityIndicator))
         }
+        .gesture(swipeClose)
         .navigationBarBackButtonHidden(true)
         .onDisappear {
             storiesViewModel.reset()
-        }
-    }
-    
-    private func isCompletedViewStory(_ progress: CGFloat){
-        if progress == 1.0 {
-            storiesViewModel.isSeen(id: idStory)
-            router.pop()
         }
     }
 }

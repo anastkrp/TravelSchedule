@@ -11,6 +11,8 @@ final class StoriesViewModel: ObservableObject {
     @Published var storyCollection: [StoryCollection] = []
     @Published var progress: CGFloat = 0
     @Published var currentStoryIndex: Int = 0
+    @Published var isPresented: Bool = false
+    @Published var storyId: UUID?
     var numberOfSections = 0
     
     init() {
@@ -23,8 +25,8 @@ final class StoriesViewModel: ObservableObject {
         }
     }
     
-    func getCurrentStory(_ id: UUID) -> [Story] {
-        let currentStory = storyCollection.first(where: { $0.id == id })?.stories ?? []
+    func getCurrentStory() -> [Story] {
+        let currentStory = storyCollection.first(where: { $0.id == storyId })?.stories ?? []
         numberOfSections = currentStory.count
         return currentStory
     }
@@ -44,9 +46,9 @@ final class StoriesViewModel: ObservableObject {
         }
     }
     
-    func isSeen(id: UUID) {
+    func isSeen() {
         withAnimation(.easeInOut.delay(0.6)) {
-            if let index = storyCollection.firstIndex(where: { $0.id == id }) {
+            if let index = storyCollection.firstIndex(where: { $0.id == storyId }) {
                 storyCollection[index].isSeen = true
             }
         }
@@ -56,5 +58,13 @@ final class StoriesViewModel: ObservableObject {
         progress = 0
         currentStoryIndex = 0
         numberOfSections = 0
+        storyId = nil
+    }
+    
+    func isCompletedViewStory() {
+        if progress == 1.0 {
+            isSeen()
+            isPresented = false
+        }
     }
 }

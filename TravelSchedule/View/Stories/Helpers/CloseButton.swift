@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CloseButton: View {
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var viewModel: StoriesViewModel
     
     var body: some View {
         Button(action: {
-            router.pop()
+            viewModel.isPresented = false
         }) {
             Image("ButtonClose")
         }

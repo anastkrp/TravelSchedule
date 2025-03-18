@@ -14,5 +14,4 @@ enum Route: Hashable {
     case filter
     case carrierInfo(Int)
     case userAgreement
-    case story(UUID)
 }

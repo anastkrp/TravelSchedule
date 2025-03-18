@@ -18,7 +18,8 @@ struct MainView: View {
             StoriesPreview(
                 storyCollection: storiesViewModel.storyCollection,
                 didTapStory: { id in
-                    router.push(.story(id))
+                    storiesViewModel.storyId = id
+                    storiesViewModel.isPresented = true
                 }
             )
             

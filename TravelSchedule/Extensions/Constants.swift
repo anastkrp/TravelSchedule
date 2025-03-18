@@ -46,4 +46,7 @@ struct Constants {
     static let storySmallWidth: CGFloat = 92.0
     static let storySmallHeight: CGFloat = 140.0
     static let progressHeight: CGFloat = 6.0
+    
+    static let dragIndicatorSize: Double = 200.0
+    static let opacityIndicator: Double = 400.0
 }

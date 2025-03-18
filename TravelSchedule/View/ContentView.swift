@@ -40,10 +40,11 @@ struct ContentView: View {
                     CarrierInfoView(carrierCode: code)
                 case .userAgreement:
                     UserAgreementView()
-                case .story(let idStory):
-                    StoriesView(idStory: idStory)
-                        .colorScheme(.dark)
                 }
+            }
+            .fullScreenCover(isPresented: $storiesViewModel.isPresented) {
+                StoriesView()
+                    .colorScheme(.dark)
             }
         }
         .environmentObject(router)
