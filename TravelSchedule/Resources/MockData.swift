@@ -67,11 +67,11 @@ struct MockData {
         StoryCollection(
             storyPreviewImage: "storySmall_1",
             stories: [
-                Story(title: "Text",
-                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                Story(title: "Text Text Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
                       imageFull: "storyFull_1"
                      ),
-                Story(title: "Text",
+                Story(title: "Text Text Text Text Text Text Text Text Text Text Text",
                       description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
                       imageFull: "storyFull_1.2"
                      )
@@ -84,7 +84,7 @@ struct MockData {
                       description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
                       imageFull: "storyFull_2"
                      ),
-                Story(title: "Text Text",
+                Story(title: "Text Text Text Text Text Text Text",
                       description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
                       imageFull: "storyFull_2.2"
                      )
@@ -93,12 +93,12 @@ struct MockData {
         StoryCollection(
             storyPreviewImage: "storySmall_3",
             stories: [
-                Story(title: "Text Text",
+                Story(title: "Text Text Text",
                       description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
                       imageFull: "storyFull_3"
                      ),
-                Story(title: "Text Text",
-                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                Story(title: "Text Text Text Text Text Text Text Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
                       imageFull: "storyFull_3.2"
                      )
                 ],
@@ -106,7 +106,7 @@ struct MockData {
         StoryCollection(
             storyPreviewImage: "storySmall_4",
             stories: [
-                Story(title: "Text Text",
+                Story(title: "Text Text Text Text Text Text Text Text Text",
                       description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
                       imageFull: "storyFull_4"
                      ),
@@ -119,8 +119,8 @@ struct MockData {
         StoryCollection(
             storyPreviewImage: "storySmall_5",
             stories: [
-                Story(title: "Text Text",
-                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                Story(title: "Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
                       imageFull: "storyFull_5"
                      ),
                 Story(title: "Text Text",
