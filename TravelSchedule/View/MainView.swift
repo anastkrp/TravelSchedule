@@ -51,6 +51,7 @@ struct MainView: View {
                             .fill(.blueUniversal)
                     }
             }
+            .padding(.top)
             .opacity(viewModel.onSearch ? 1 : 0)
             
             Spacer()
