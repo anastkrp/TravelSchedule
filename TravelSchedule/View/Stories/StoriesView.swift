@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StoriesView: View {
+    @EnvironmentObject var router: Router
     @EnvironmentObject private var storiesViewModel: StoriesViewModel
     let idStory: UUID
     private var timerConfiguration: TimerConfiguration { .init(storiesCount: storiesViewModel.numberOfSections) }
@@ -32,16 +33,23 @@ struct StoriesView: View {
             )
             .onChange(of: storiesViewModel.progress) {
                 storiesViewModel.didChangeProgress($0)
-                storiesViewModel.isSeen(id: idStory)
+                isCompletedViewStory($0)
             }
             
             CloseButton()
-                .padding(.top, 57)
-                .padding(.trailing, 12)
+                .padding(.top, Constants.paddingTop)
+                .padding(.trailing, Constants.paddingTrailing)
         }
         .navigationBarBackButtonHidden(true)
         .onDisappear {
             storiesViewModel.reset()
+        }
+    }
+    
+    private func isCompletedViewStory(_ progress: CGFloat){
+        if progress == 1.0 {
+            storiesViewModel.isSeen(id: idStory)
+            router.pop()
         }
     }
 }

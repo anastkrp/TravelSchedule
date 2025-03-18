@@ -27,6 +27,8 @@ struct Constants {
     static let paddingSmall: CGFloat = 8.0
     static let paddingMedium: CGFloat = 14.0
     static let paddingLarge: CGFloat = 24.0
+    static let paddingTrailing: CGFloat = 12.0
+    static let paddingTop: CGFloat = 57.0
     
     static let textHeight: CGFloat = 48.0
     static let rowHeight: CGFloat = 60.0

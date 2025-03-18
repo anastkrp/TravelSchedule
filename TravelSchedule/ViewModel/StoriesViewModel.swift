@@ -45,7 +45,7 @@ final class StoriesViewModel: ObservableObject {
     }
     
     func isSeen(id: UUID) {
-        if progress == 0.0 {
+        withAnimation(.easeInOut.delay(0.6)) {
             if let index = storyCollection.firstIndex(where: { $0.id == id }) {
                 storyCollection[index].isSeen = true
             }

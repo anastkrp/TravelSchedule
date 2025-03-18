@@ -42,7 +42,7 @@ struct StoriesProgressView: View {
     private func timerTick() {
         var nextProgress = progress + timerConfiguration.progressPerTick
         if nextProgress >= 1 {
-            nextProgress = 0
+            nextProgress = 1
         }
         withAnimation {
             progress = nextProgress
