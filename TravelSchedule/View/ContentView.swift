@@ -42,6 +42,7 @@ struct ContentView: View {
                     UserAgreementView()
                 case .story(let idStory):
                     StoriesView(idStory: idStory)
+                        .colorScheme(.dark)
                 }
             }
         }
