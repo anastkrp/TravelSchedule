@@ -47,8 +47,8 @@ final class StoriesViewModel: ObservableObject {
     }
     
     func isSeen() {
-        withAnimation(.easeInOut.delay(0.6)) {
-            if let index = storyCollection.firstIndex(where: { $0.id == storyId }) {
+        if let index = storyCollection.firstIndex(where: { $0.id == storyId }) {
+            withAnimation(.easeInOut.delay(0.6)) {
                 storyCollection[index].isSeen = true
             }
         }

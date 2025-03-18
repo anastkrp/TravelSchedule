@@ -13,8 +13,8 @@ struct StoriesTabView: View {
     
     var body: some View {
         TabView(selection: $currentStoryIndex) {
-            ForEach(0..<stories.count, id: \.self) { story in
-                StoryView(story: stories[story])
+            ForEach(0..<stories.count, id: \.self) { index in
+                StoryView(story: stories[index])
                     .onTapGesture(perform: didTapStory)
             }
         }
