@@ -17,12 +17,18 @@ struct Constants {
     static let cornerRadiusMedium: CGFloat = 16.0
     static let cornerRadiusLarge: CGFloat = 24.0
     static let searchBarCornerRadius: CGFloat = 10.0
+    static let storyImageCornerRadius: CGFloat = 40.0
+    static let progressCornerRadius: CGFloat = 6.0
     
     static let letterSpacing: CGFloat = 0.4
+    static let lineLimitSmall: Int = 2
+    static let lineLimitMedium: Int = 3
     
     static let paddingSmall: CGFloat = 8.0
     static let paddingMedium: CGFloat = 14.0
     static let paddingLarge: CGFloat = 24.0
+    static let paddingTrailing: CGFloat = 12.0
+    static let paddingTop: CGFloat = 57.0
     
     static let textHeight: CGFloat = 48.0
     static let rowHeight: CGFloat = 60.0
@@ -37,4 +43,10 @@ struct Constants {
     static let searchBarHeight: CGFloat = 36.0
     static let imageErrorSize: CGFloat = 223.0
     static let logoCarrierSize: CGFloat = 38.0
+    static let storySmallWidth: CGFloat = 92.0
+    static let storySmallHeight: CGFloat = 140.0
+    static let progressHeight: CGFloat = 6.0
+    
+    static let dragIndicatorSize: Double = 200.0
+    static let opacityIndicator: Double = 400.0
 }

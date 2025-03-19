@@ -10,10 +10,19 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var router: Router
+    @EnvironmentObject private var storiesViewModel: StoriesViewModel
     @StateObject private var monitor = NetworkMonitor()
     
     var body: some View {
         VStackErrorHandling(errorType: monitor.isConnected ? .none : .noInternetConnection) {
+            StoriesPreview(
+                storyCollection: storiesViewModel.storyCollection,
+                didTapStory: { id in
+                    storiesViewModel.storyId = id
+                    storiesViewModel.isPresented = true
+                }
+            )
+            
             DestinationView(
                 from: viewModel.from,
                 to: viewModel.to,
@@ -27,7 +36,8 @@ struct MainView: View {
                 },
                 didTapSwapButton: { viewModel.swapDestination() }
             )
-            .padding()
+            .padding(.horizontal)
+            .padding(.top, 20)
             
             Button(action: {
                 router.push(.carriers)
@@ -41,7 +51,10 @@ struct MainView: View {
                             .fill(.blueUniversal)
                     }
             }
+            .padding(.top)
             .opacity(viewModel.onSearch ? 1 : 0)
+            
+            Spacer()
         }
     }
 }

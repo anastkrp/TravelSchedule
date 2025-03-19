@@ -62,4 +62,72 @@ struct MockData {
             email: "fgc@yandex.ru"
         )
     ]
+    
+    static var storiesMock: [StoryCollection] = [
+        StoryCollection(
+            storyPreviewImage: "storySmall_1",
+            stories: [
+                Story(title: "Text Text Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_1"
+                     ),
+                Story(title: "Text Text Text Text Text Text Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_1.2"
+                     )
+                ],
+            isSeen: false),
+        StoryCollection(
+            storyPreviewImage: "storySmall_2",
+            stories: [
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_2"
+                     ),
+                Story(title: "Text Text Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_2.2"
+                     )
+                ],
+            isSeen: false),
+        StoryCollection(
+            storyPreviewImage: "storySmall_3",
+            stories: [
+                Story(title: "Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_3"
+                     ),
+                Story(title: "Text Text Text Text Text Text Text Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_3.2"
+                     )
+                ],
+            isSeen: false),
+        StoryCollection(
+            storyPreviewImage: "storySmall_4",
+            stories: [
+                Story(title: "Text Text Text Text Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_4"
+                     ),
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_4.2"
+                     )
+                ],
+            isSeen: false),
+        StoryCollection(
+            storyPreviewImage: "storySmall_5",
+            stories: [
+                Story(title: "Text Text Text Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_5"
+                     ),
+                Story(title: "Text Text",
+                      description: "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
+                      imageFull: "storyFull_5.2"
+                     )
+                ],
+            isSeen: false)
+    ]
 }
