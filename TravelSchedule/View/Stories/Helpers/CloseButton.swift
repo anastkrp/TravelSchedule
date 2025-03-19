@@ -11,9 +11,9 @@ struct CloseButton: View {
     @EnvironmentObject var viewModel: StoriesViewModel
     
     var body: some View {
-        Button(action: {
+        Button {
             viewModel.isPresented = false
-        }) {
+        } label: {
             Image("ButtonClose")
         }
     }

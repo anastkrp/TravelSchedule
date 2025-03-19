@@ -28,7 +28,7 @@ struct ProgressBar: View {
                     )
                     .foregroundStyle(.blueUniversal)
             }
-            .mask(MaskView(numberOfSection: numberOfSections))
+            .mask(MaskView(numberOfSections: numberOfSections))
         }
     }
 }
@@ -43,11 +43,11 @@ private struct MaskFragmentView: View {
 }
 
 private struct MaskView: View {
-    let numberOfSection: Int
+    let numberOfSections: Int
     
     var body: some View {
         HStack {
-            ForEach(0..<numberOfSection, id: \.self) { _ in
+            ForEach(0..<numberOfSections, id: \.self) { _ in
                 MaskFragmentView()
             }
         }

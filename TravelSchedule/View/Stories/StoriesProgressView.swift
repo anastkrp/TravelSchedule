@@ -24,6 +24,10 @@ struct StoriesProgressView: View {
     }
     
     var body: some View {
+        content
+    }
+    
+    private var content: some View {
         ProgressBar(numberOfSections: storiesCount, progress: progress)
             .padding(.top, 35)
             .padding(.horizontal, 12)

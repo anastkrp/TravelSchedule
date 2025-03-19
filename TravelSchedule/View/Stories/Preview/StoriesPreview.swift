@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct StoriesPreview: View {
+    
+    // MARK: - Properties
+    
     let storyCollection: [StoryCollection]
     let didTapStory: (UUID) -> Void
+    
+    // MARK: - Content
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(storyCollection) { story in
                     storyImage(story.storyPreviewImage, isSeen: story.isSeen)
+                        .overlay(storyTitle(story.stories.isEmpty ? "" : story.stories[0].title))
                         .onTapGesture {
                             didTapStory(story.id)
-                        }
-                        .overlay {
-                            VStack {
-                                Spacer()
-                                storyTitle(story.stories.isEmpty ? "" : story.stories[0].title)
-                            }
                         }
                         .opacity(story.isSeen ? 0.5 : 1.0)
                 }
@@ -32,6 +32,8 @@ struct StoriesPreview: View {
             .padding(.vertical, Constants.paddingLarge)
         }
     }
+    
+    // MARK: - View
     
     private func storyImage(_ image: String, isSeen: Bool) -> some View {
         Image(image)
@@ -47,12 +49,15 @@ struct StoriesPreview: View {
     }
     
     private func storyTitle(_ title: String) -> some View {
-        Text(title)
-            .font(.caption)
-            .lineLimit(Constants.lineLimitMedium)
-            .foregroundStyle(.whiteUniversal)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, Constants.paddingSmall)
-            .padding(.bottom, 12)
+        VStack(spacing: .zero) {
+            Spacer()
+            Text(title)
+                .font(.caption)
+                .lineLimit(Constants.lineLimitMedium)
+                .foregroundStyle(.whiteUniversal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, Constants.paddingSmall)
+                .padding(.bottom, 12)
+        }
     }
 }

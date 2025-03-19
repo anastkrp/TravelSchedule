@@ -15,31 +15,10 @@ struct StoriesView: View {
         .init(storiesCount: storiesViewModel.numberOfSections)
     }
     
-    private var swipeClose: some Gesture {
-        DragGesture()
-            .onChanged { value in
-                if value.translation.height > 0.0 {
-                    withAnimation {
-                        dragValue = value.translation.height
-                    }
-                }
-            }
-            .onEnded { value in
-                if value.translation.height > Constants.dragIndicatorSize {
-                    storiesViewModel.isPresented = false
-                } else {
-                    withAnimation {
-                        dragValue = 0
-                    }
-                }
-            }
-    }
-    
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Color.blackUniversal
                 .ignoresSafeArea()
-            
             Group {
                 StoriesTabView(
                     currentStoryIndex: $storiesViewModel.currentStoryIndex,
@@ -70,5 +49,25 @@ struct StoriesView: View {
         .onDisappear {
             storiesViewModel.reset()
         }
+    }
+    
+    private var swipeClose: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                if value.translation.height > 0.0 {
+                    withAnimation {
+                        dragValue = value.translation.height
+                    }
+                }
+            }
+            .onEnded { value in
+                if value.translation.height > Constants.dragIndicatorSize {
+                    storiesViewModel.isPresented = false
+                } else {
+                    withAnimation {
+                        dragValue = 0
+                    }
+                }
+            }
     }
 }
