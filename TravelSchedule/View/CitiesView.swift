@@ -37,8 +37,8 @@ struct CitiesView: View {
             .modifier(NavigationBarStyle(title: "Выбор города"))
         }
         .background(.whiteTS)
-        .onAppear {
-//            cityStationViewModel.loadStationList()
+        .task {
+            await cityStationViewModel.loadStationList()
         }
     }
 }
