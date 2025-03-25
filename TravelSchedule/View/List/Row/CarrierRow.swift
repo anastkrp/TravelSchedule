@@ -20,7 +20,7 @@ struct CarrierRow: View {
                 VStack(alignment: .leading) {
                     Text(carrier.carrierTitle)
                         .foregroundStyle(.blackUniversal)
-                    Text(carrier.transfer)
+                    Text(carrier.transfer ? "С пересадкой" : "")
                         .font(.caption)
                         .foregroundStyle(.redUniversal)
                 }
@@ -70,6 +70,6 @@ struct CarrierRow: View {
         departureTime: "22:30",
         arrivalTime: "08:15",
         duration: 72000,
-        transfer: "С пересадкой в Костроме"
+        transfer: true
     ))
 }

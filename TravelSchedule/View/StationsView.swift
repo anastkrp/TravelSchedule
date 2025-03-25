@@ -8,28 +8,27 @@
 import SwiftUI
 
 struct StationsView: View {
-    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var cityStationViewModel: CityStationViewModel
     @EnvironmentObject private var router: Router
     @State private var searchText = String()
-    private var searchResults: [String] {
+    private var searchResults: [Stations] {
         searchText.isEmpty
-        ? stations
-        : stations.filter { $0.contains(searchText) }
+        ? cityStationViewModel.stations
+        : cityStationViewModel.stations.filter { $0.stationName.contains(searchText) }
     }
-    let stations: [String]
     
     var body: some View {
         VStack {
             SearchBar(searchText: $searchText)
             ListCityStation(
                 isEmptyData: searchResults.isEmpty,
-                emptyTitle: "Станция не найдена"
+                emptyTitle: "Станция не найдена",
+                isLoading: cityStationViewModel.stations.isEmpty
             ) {
                 ForEach(searchResults, id: \.self) { station in
-                    CityStationRow(titleRow: station)
+                    CityStationRow(titleRow: station.stationName)
                         .onTapGesture(perform: {
-                            viewModel.stationSelected = station
-                            viewModel.addDestination()
+                            cityStationViewModel.stationSelected = (name: station.stationName, code: station.code)
                             router.popToRoot()
                         })
                 }
@@ -41,5 +40,5 @@ struct StationsView: View {
 }
 
 #Preview {
-    StationsView(stations: [""])
+    StationsView()
 }

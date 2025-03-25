@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject private var viewModel: ViewModel
-    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var mainViewModel: MainViewModel
+    @EnvironmentObject private var cityStationViewModel: CityStationViewModel
     @EnvironmentObject private var storiesViewModel: StoriesViewModel
+    @EnvironmentObject private var router: Router
     @StateObject private var monitor = NetworkMonitor()
     
     var body: some View {
@@ -24,23 +25,27 @@ struct MainView: View {
             )
             
             DestinationView(
-                from: viewModel.from,
-                to: viewModel.to,
+                from: mainViewModel.from,
+                to: mainViewModel.to,
                 didTapFrom: {
-                    viewModel.direction = .from
+                    mainViewModel.direction = .from
                     router.push(.citySelection)
                 },
                 didTapTo: {
-                    viewModel.direction = .to
+                    mainViewModel.direction = .to
                     router.push(.citySelection)
                 },
-                didTapSwapButton: { viewModel.swapDestination() }
+                didTapSwapButton: { mainViewModel.swapDestination() }
             )
             .padding(.horizontal)
             .padding(.top, 20)
             
             Button(action: {
-                router.push(.carriers)
+                router.push(.carriers(
+                    mainViewModel.destinationTitle,
+                    mainViewModel.codeFrom,
+                    mainViewModel.codeTo
+                ))
             }) {
                 Text("Найти")
                     .fontWeight(.bold)
@@ -52,9 +57,11 @@ struct MainView: View {
                     }
             }
             .padding(.top)
-            .opacity(viewModel.onSearch ? 1 : 0)
-            
+            .opacity(mainViewModel.onSearch ? 1 : 0)
             Spacer()
+        }
+        .onAppear {
+            mainViewModel.bind(cityStationVM: cityStationViewModel)
         }
     }
 }

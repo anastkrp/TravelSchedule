@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FilterView: View {
-    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: CarriersViewModel
     @EnvironmentObject private var router: Router
     
     var body: some View {

@@ -8,27 +8,29 @@
 import SwiftUI
 
 struct CitiesView: View {
-    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var cityStationViewModel: CityStationViewModel
     @EnvironmentObject private var router: Router
     @State private var searchText = String()
-    private var searchResults: [CityStations] {
+    private var searchResults: [StationsByCity] {
         searchText.isEmpty
-        ? viewModel.cityStations
-        : viewModel.cityStations.filter { $0.city.contains(searchText) }
+        ? cityStationViewModel.cityWithStations
+        : cityStationViewModel.cityWithStations.filter { $0.cityName.contains(searchText) }
     }
     
     var body: some View {
-        VStack {
+        VStackErrorHandling(errorType: cityStationViewModel.isServerError ? .serverError : .none) {
             SearchBar(searchText: $searchText)
             ListCityStation(
                 isEmptyData: searchResults.isEmpty,
-                emptyTitle: "Город не найден"
+                emptyTitle: "Город не найден",
+                isLoading: cityStationViewModel.cityWithStations.isEmpty
             ) {
                 ForEach(searchResults) { cities in
-                    CityStationRow(titleRow: cities.city)
+                    CityStationRow(titleRow: cities.cityName)
                         .onTapGesture {
-                            viewModel.citySelected = cities.city
-                            router.push(.stationSelection(cities.stations))
+                            cityStationViewModel.citySelected = cities.cityName
+                            cityStationViewModel.stations = cities.stations
+                            router.push(.stationSelection)
                         }
                 }
             }
@@ -36,7 +38,7 @@ struct CitiesView: View {
         }
         .background(.whiteTS)
         .onAppear {
-            viewModel.loadCityStations()
+//            cityStationViewModel.loadStationList()
         }
     }
 }
