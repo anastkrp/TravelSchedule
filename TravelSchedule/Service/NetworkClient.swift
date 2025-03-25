@@ -26,4 +26,13 @@ actor NetworkClient {
         let buffer = try await Data(collecting: httpBody, upTo: Constants.bufferSize)
         return try JSONDecoder().decode(StationsList.self, from: buffer)
     }
+    
+    func fetchSchedule(from: String, to: String, date: String) async throws -> Search {
+        let response = try await client.search(query: .init(
+            from: from,
+            to: to,
+            date: date
+        ))
+        return try response.ok.body.json
+    }
 }

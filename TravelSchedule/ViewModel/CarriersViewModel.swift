@@ -15,6 +15,7 @@ final class CarriersViewModel: ObservableObject {
     @Published var isServerError: Bool = false
     private var carriers: [Carrier] = []
     private var carriersInfoAll: [CarrierInfo] = []
+    private let service = SearchService()
     
     @Published var isActiveFilter: Bool = false
     @Published var filter: Filter = Filter(
@@ -33,7 +34,84 @@ final class CarriersViewModel: ObservableObject {
     
     // MARK: - CarriersView
     
-    // loadCarriers
+    func loadCarriers(codeFrom: String, codeTo: String) async {
+        if !carriers.isEmpty { return }
+        isServerError = false
+        let today = Date()
+        isLoading = true
+        do {
+            async let search = service.search(
+                from: codeFrom,
+                to: codeTo,
+                date: today.toStringFormat()
+            )
+            try await getCarriers(search)
+            isLoading = false
+        } catch {
+            isLoading = false
+            isServerError = true
+        }
+    }
+    
+    private func getCarriers(_ data: Search) {
+        var newCarriers: [Carrier] = []
+        var newCarriersInfo: [CarrierInfo] = []
+        let segments = data.segments
+        for segment in segments ?? [] {
+            guard
+                let code = segment.thread?.carrier?.code,
+                let carrierTitle = segment.thread?.carrier?.title,
+                let carrierLogo = segment.thread?.carrier?.logo,
+                let departureDay = segment.start_date,
+                let departureTime = segment.departure,
+                let arrival = segment.arrival,
+                let duration = segment.duration,
+                let transfer = segment.has_transfers
+            else { continue }
+            
+            newCarriers.append(Carrier(
+                code: code,
+                carrierTitle: carrierTitle,
+                carrierLogo: carrierLogo,
+                departureDay: departureDay,
+                departureTime: departureTime,
+                arrivalTime: arrival,
+                duration: duration,
+                transfer: transfer
+            ))
+            
+            guard
+                let logo = segment.thread?.carrier?.logo,
+                let phone = segment.thread?.carrier?.phone,
+                let email = segment.thread?.carrier?.email
+            else { continue }
+            
+            newCarriersInfo.append(CarrierInfo(
+                code: code,
+                title: carrierTitle,
+                logo: logo,
+                phone: phone,
+                email: email
+            ))
+        }
+        withAnimation(.easeInOut) {
+            carriers = newCarriers
+            filterCarriers()
+        }
+        carriersInfoAll = newCarriersInfo
+    }
+    
+    func clearData() {
+        carriers.removeAll()
+        filter = Filter(
+            morning: false,
+            afternoon: false,
+            evening: false,
+            night: false,
+            transferYes: false,
+            transferNo: false
+        )
+    }
     
     // MARK: - CarriersInfo
     

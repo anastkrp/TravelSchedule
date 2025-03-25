@@ -48,7 +48,7 @@ struct MockData {
         )
     ]
     
-    static var storiesMock: [StoryCollection] = [
+    nonisolated(unsafe) static var storiesMock: [StoryCollection] = [
         StoryCollection(
             storyPreviewImage: "storySmall_1",
             stories: [

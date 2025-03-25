@@ -28,7 +28,7 @@ struct CarrierInfoView: View {
         }
         .background(.whiteTS)
         .onAppear() {
-//            carriersViewModel.loadCarrierInfo(code: carrierCode)
+            carriersViewModel.loadCarrierInfo(code: carrierCode)
         }
     }
     
@@ -38,7 +38,7 @@ struct CarrierInfoView: View {
             case .success(let image):
                 RoundedRectangle(cornerRadius: Constants.cornerRadiusLarge)
                     .fill(.whiteUniversal)
-                    .frame(maxWidth: .infinity, maxHeight: 104)
+                    .frame(maxWidth: .infinity, maxHeight: Constants.logoCarrierHeight)
                     .overlay(
                         image
                             .resizable()
@@ -47,10 +47,10 @@ struct CarrierInfoView: View {
             case .failure, .empty:
                 RoundedRectangle(cornerRadius: Constants.cornerRadiusLarge)
                     .fill(.whiteUniversal)
-                    .frame(maxWidth: .infinity, maxHeight: 104)
+                    .frame(maxWidth: .infinity, maxHeight: Constants.logoCarrierHeight)
             default:
                 ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: 104)
+                    .frame(maxWidth: .infinity, maxHeight: Constants.logoCarrierHeight)
             }
         }
         .padding()

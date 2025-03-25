@@ -23,11 +23,11 @@ struct CarriersView: View {
     var body: some View {
         content
             .task {
-                // loadCarriers
+                await carriersViewModel.loadCarriers(codeFrom: codeFrom, codeTo: codeTo)
             }
             .onDisappear {
                 if router.path.isEmpty {
-                    // clearData
+                    carriersViewModel.clearData()
                 }
             }
     }
@@ -88,5 +88,4 @@ struct CarriersView: View {
         .padding(.horizontal)
         .padding(.bottom, Constants.paddingLarge)
     }
-    
 }
