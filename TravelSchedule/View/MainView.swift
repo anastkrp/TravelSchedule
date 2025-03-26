@@ -42,9 +42,9 @@ struct MainView: View {
             
             Button(action: {
                 router.push(.carriers(
-                    mainViewModel.destinationTitle,
-                    mainViewModel.codeFrom,
-                    mainViewModel.codeTo
+                    title: mainViewModel.destinationTitle,
+                    from: mainViewModel.codeFrom,
+                    to: mainViewModel.codeTo
                 ))
             }) {
                 Text("Найти")

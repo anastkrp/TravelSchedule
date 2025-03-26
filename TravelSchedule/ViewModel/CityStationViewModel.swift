@@ -18,7 +18,7 @@ final class CityStationViewModel: ObservableObject {
     private let service = StationsListService()
     
     func loadStationList() async {
-        if !cityWithStations.isEmpty { return }
+        guard stations.isEmpty else { return }
         isServerError = false
         do {
             async let stationList = service.stationsList()

@@ -35,7 +35,7 @@ final class CarriersViewModel: ObservableObject {
     // MARK: - CarriersView
     
     func loadCarriers(codeFrom: String, codeTo: String) async {
-        if !carriers.isEmpty { return }
+        guard carriers.isEmpty else { return }
         isServerError = false
         let today = Date()
         isLoading = true
