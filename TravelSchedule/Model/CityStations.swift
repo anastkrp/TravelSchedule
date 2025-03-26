@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct StationsByCity: Identifiable, Hashable {
+struct StationsByCity: Identifiable, Hashable, Sendable {
     let id = UUID()
     let cityName: String
     let stations: [Stations]
 }
-struct Stations: Identifiable, Hashable {
+struct Stations: Identifiable, Hashable, Sendable {
     let id = UUID()
     let stationName: String
     let code: String

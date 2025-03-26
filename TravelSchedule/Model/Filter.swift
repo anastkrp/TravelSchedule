@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Filter {
+struct Filter: Sendable {
     let morning: Bool
     let afternoon: Bool
     let evening: Bool
