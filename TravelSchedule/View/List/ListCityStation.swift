@@ -8,17 +8,23 @@
 import SwiftUI
 
 public struct ListCityStation<Content: View>: View {
+    
+    // MARK: - Properties
+    
     let isEmptyData: Bool
     let emptyTitle: String
+    let isLoading: Bool
     @ViewBuilder var content: Content
+    
+    // MARK: - Content
     
     public var body: some View {
         if isEmptyData {
-            VStack {
-                Text(emptyTitle)
-                    .font(.system(size: 24, weight: .bold))
+            if isLoading {
+                loadingView()
+            } else {
+                emptyDataView(emptyTitle)
             }
-            .frame(maxHeight: .infinity)
         } else {
             ScrollView {
                 LazyVStack(spacing: 0) {
@@ -26,5 +32,25 @@ public struct ListCityStation<Content: View>: View {
                 }
             }
         }
+    }
+    
+    // MARK: - View
+    
+    private func loadingView() -> some View {
+        VStack {
+            ProgressView("Загрузка...")
+                .progressViewStyle(.circular)
+                .tint(.blackTS)
+                .opacity(isLoading ? 1 : 0)
+        }
+        .frame(maxHeight: .infinity)
+    }
+    
+    private func emptyDataView(_ emptyTitle: String) -> some View {
+        VStack {
+            Text(emptyTitle)
+                .font(.system(size: 24, weight: .bold))
+        }
+        .frame(maxHeight: .infinity)
     }
 }

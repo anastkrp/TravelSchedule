@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var router = Router()
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var mainViewModel = MainViewModel()
+    @StateObject private var cityStationViewModel = CityStationViewModel()
+    @StateObject private var carriersViewModel = CarriersViewModel()
     @StateObject private var storiesViewModel = StoriesViewModel()
-    
+    @StateObject private var router = Router()
+
     var body: some View {
         NavigationStack(path: $router.path) {
             TabView {
@@ -30,10 +32,10 @@ struct ContentView: View {
                 switch destination {
                 case .citySelection:
                     CitiesView()
-                case .stationSelection(let stations):
-                    StationsView(stations: stations)
-                case .carriers:
-                    CarriersView()
+                case .stationSelection:
+                    StationsView()
+                case .carriers(let title, let from, let to):
+                    CarriersView(destinationTitle: title, codeFrom: from, codeTo: to)
                 case .filter:
                     FilterView()
                 case .carrierInfo(let code):
@@ -47,9 +49,11 @@ struct ContentView: View {
                     .colorScheme(.dark)
             }
         }
-        .environmentObject(router)
-        .environmentObject(viewModel)
+        .environmentObject(mainViewModel)
+        .environmentObject(cityStationViewModel)
+        .environmentObject(carriersViewModel)
         .environmentObject(storiesViewModel)
+        .environmentObject(router)
     }
 }
 

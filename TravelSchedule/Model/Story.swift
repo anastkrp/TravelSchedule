@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Story: Identifiable {
+struct Story: Identifiable, Sendable {
     let id = UUID()
     let title: String
     let description: String
     let imageFull: String
 }
 
-struct StoryCollection: Identifiable {
+struct StoryCollection: Identifiable, Sendable {
     let id = UUID()
     let storyPreviewImage: String
     let stories: [Story]

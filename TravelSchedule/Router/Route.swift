@@ -9,8 +9,8 @@ import Foundation
 
 enum Route: Hashable {
     case citySelection
-    case stationSelection([String])
-    case carriers
+    case stationSelection
+    case carriers(title: String, from: String, to: String)
     case filter
     case carrierInfo(Int)
     case userAgreement

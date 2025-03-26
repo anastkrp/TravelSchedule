@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 final class StoriesViewModel: ObservableObject {
     @Published var storyCollection: [StoryCollection] = []
     @Published var progress: CGFloat = 0

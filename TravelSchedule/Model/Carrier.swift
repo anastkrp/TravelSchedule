@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Carrier: Identifiable, Hashable {
+struct Carrier: Identifiable, Hashable, Sendable {
     let id = UUID()
     let code: Int
     let carrierTitle: String
@@ -16,5 +16,5 @@ struct Carrier: Identifiable, Hashable {
     let departureTime: String
     let arrivalTime: String
     let duration: Int
-    let transfer: String
+    let transfer: Bool
 }

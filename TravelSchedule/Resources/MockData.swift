@@ -8,21 +8,6 @@
 import Foundation
 
 struct MockData {
-    static let cityStationsMock: [CityStations] = [
-        CityStations(
-            city: "Москва",
-            stations: ["Белорусский вокзал", "Восточный вокзал", "Казанский вокзал", "Ленинградский вокзал"]
-        ),
-        CityStations(
-            city: "Санкт-Петербург",
-            stations: ["Балтийский вокзал", "Ладожский вокзал", "Московский вокзал"]
-        ),
-        CityStations(
-            city: "Сочи",
-            stations: ["Аэропорт Сочи", "Станция Сочи", "Хоста"]
-        )
-    ]
-    
     static let carriersMock: [Carrier] = [
         Carrier(
             code: 1,
@@ -32,7 +17,7 @@ struct MockData {
             departureTime: "22:30",
             arrivalTime: "08:15",
             duration: 72000,
-            transfer: "С пересадкой в Костроме"
+            transfer: true
         ),
         Carrier(
             code: 2,
@@ -42,7 +27,7 @@ struct MockData {
             departureTime: "01:15",
             arrivalTime: "09:00",
             duration: 32400,
-            transfer: ""
+            transfer: false
         )
     ]
     
@@ -63,7 +48,7 @@ struct MockData {
         )
     ]
     
-    static var storiesMock: [StoryCollection] = [
+    nonisolated(unsafe) static var storiesMock: [StoryCollection] = [
         StoryCollection(
             storyPreviewImage: "storySmall_1",
             stories: [

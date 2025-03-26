@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage("isDarkMode") private var isDarkModeEnabled: Bool = false
+    @StateObject private var settingsViewModel = SettingsViewModel()
     @EnvironmentObject private var router: Router
     
     var body: some View {
         VStack(spacing: 0.0) {
-            Toggle("Темная тема", isOn: $isDarkModeEnabled)
+            Toggle("Темная тема", isOn: $settingsViewModel.isDarkModeEnabled)
                 .padding()
                 .foregroundColor(.blackTS)
                 .tint(.blueUniversal)

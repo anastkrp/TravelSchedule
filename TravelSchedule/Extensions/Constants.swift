@@ -43,6 +43,7 @@ struct Constants {
     static let searchBarHeight: CGFloat = 36.0
     static let imageErrorSize: CGFloat = 223.0
     static let logoCarrierSize: CGFloat = 38.0
+    static let logoCarrierHeight: CGFloat = 104.0
     static let storySmallWidth: CGFloat = 92.0
     static let storySmallHeight: CGFloat = 140.0
     static let progressHeight: CGFloat = 6.0

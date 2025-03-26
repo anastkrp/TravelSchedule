@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "" : {
+
+    },
     "%lld hour" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -76,6 +79,9 @@
 
     },
     "Применить" : {
+
+    },
+    "С пересадкой" : {
 
     },
     "Темная тема" : {
